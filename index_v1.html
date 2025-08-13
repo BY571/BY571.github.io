@@ -301,62 +301,53 @@
 			/* Projects Grid */
 			.projects-grid {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 				gap: 2rem;
 			}
 
-			.project-card {
+			.project-item {
 				background: var(--card-bg);
-				border-radius: 15px;
-				overflow: hidden;
+				padding: 2rem;
+				border-radius: 8px;
 				box-shadow: var(--shadow);
+				border-left: 4px solid var(--primary-color);
 				transition: all 0.3s ease;
 			}
 
-			.project-card:hover {
-				transform: translateY(-10px);
+			.project-item:hover {
+				transform: translateY(-3px);
 				box-shadow: var(--shadow-hover);
 			}
 
-			.project-image {
-				width: 100%;
-				height: 200px;
-				background: linear-gradient(135deg, var(--primary-color), #3ba891);
+			.project-header {
 				display: flex;
-				align-items: center;
-				justify-content: center;
-				color: white;
-				font-size: 3rem;
-			}
-
-			.project-content {
-				padding: 1.5rem;
+				justify-content: space-between;
+				align-items: flex-start;
+				margin-bottom: 1rem;
 			}
 
 			.project-title {
-				font-size: 1.2rem;
+				font-size: 1.3rem;
 				font-weight: 600;
 				color: var(--secondary-color);
-				margin-bottom: 0.5rem;
-			}
-
-			.project-description {
-				color: var(--light-text);
-				font-size: 0.95rem;
-				line-height: 1.6;
+				margin: 0;
 			}
 
 			.project-link {
-				display: inline-block;
 				color: var(--primary-color);
 				text-decoration: none;
+				font-size: 0.9rem;
 				font-weight: 500;
-				margin-top: 1rem;
 				transition: color 0.3s ease;
 			}
 
 			.project-link:hover {
 				color: #3ba891;
+			}
+
+			.project-description {
+				color: var(--light-text);
+				line-height: 1.6;
+				margin: 0;
 			}
 
 			/* Blog Posts Grid */
@@ -630,75 +621,63 @@
 		<section id="projects">
 			<div class="container">
 				<div class="section-title">
-					<h2>Featured Projects</h2>
-					<p>Open source implementations and research projects</p>
+					<h2>Projects</h2>
+					<p>Selected implementations and research work</p>
 				</div>
 				<div class="projects-grid">
-					<div class="project-card">
-						<div class="project-image">
-							<i class="fas fa-chart-line"></i>
+					<div class="project-item">
+						<div class="project-header">
+							<h3 class="project-title">Fully Parameterized Quantile Function (FQF) and Extensions</h3>
+							<a href="https://github.com/BY571/FQF-and-Extensions" class="project-link">GitHub →</a>
 						</div>
-						<div class="project-content">
-							<div class="project-title">Fully Parameterized Quantile Function (FQF) and Extensions</div>
-							<div class="project-description">Implementation of the state-of-the-art distributional RL algorithm FQF including extensions like PER, Noisy Layer, Dueling Networks, and Munchausen RL. Supporting parallel environments for faster training.</div>
-							<a href="https://github.com/BY571/FQF-and-Extensions" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
-						</div>
+						<p class="project-description">Implementation of the state-of-the-art distributional RL algorithm FQF including extensions like PER, Noisy Layer, Dueling Networks, and Munchausen RL. Supporting parallel environments for faster training.</p>
 					</div>
 
-					<div class="project-card">
-						<div class="project-image">
-							<i class="fas fa-robot"></i>
+					<div class="project-item">
+						<div class="project-header">
+							<h3 class="project-title">Soft Actor Critic and Extensions</h3>
+							<a href="https://github.com/BY571/Soft-Actor-Critic-and-Extensions" class="project-link">GitHub →</a>
 						</div>
-						<div class="project-content">
-							<div class="project-title">Soft Actor Critic and Extensions</div>
-							<div class="project-description">Implementation of the state-of-the-art algorithm Soft Actor Critic including extensions like PER and ERE for continuous control tasks.</div>
-							<a href="https://github.com/BY571/Soft-Actor-Critic-and-Extensions" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
-						</div>
+						<p class="project-description">Implementation of the state-of-the-art algorithm Soft Actor Critic including extensions like PER and ERE for continuous control tasks.</p>
 					</div>
 
-					<div class="project-card">
-						<div class="project-image">
-							<i class="fas fa-gamepad"></i>
+					<div class="project-item">
+						<div class="project-header">
+							<h3 class="project-title">DQN Atari Agents</h3>
+							<a href="https://github.com/BY571/DQN-Atari-Agents" class="project-link">GitHub →</a>
 						</div>
-						<div class="project-content">
-							<div class="project-title">DQN Atari Agents</div>
-							<div class="project-description">Modularized implementation of the DQN algorithm and all extensions up to Rainbow DQN for Atari game environments.</div>
-							<a href="https://github.com/BY571/DQN-Atari-Agents" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
-						</div>
+						<p class="project-description">Modularized implementation of the DQN algorithm and all extensions up to Rainbow DQN for Atari game environments.</p>
 					</div>
 
-					<div class="project-card">
-						<div class="project-image">
-							<i class="fas fa-exchange-alt"></i>
+					<div class="project-item">
+						<div class="project-header">
+							<h3 class="project-title">Upside-Down Reinforcement Learning</h3>
+							<a href="https://github.com/BY571/Upside-Down-Reinforcement-Learning" class="project-link">GitHub →</a>
 						</div>
-						<div class="project-content">
-							<div class="project-title">Upside-Down Reinforcement Learning</div>
-							<div class="project-description">Paper implementation of the algorithm Reinforcement Learning Upside Down by Jürgen Schmidhuber, exploring goal-conditioned RL.</div>
-							<a href="https://github.com/BY571/Upside-Down-Reinforcement-Learning" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
-						</div>
+						<p class="project-description">Paper implementation of the algorithm Reinforcement Learning Upside Down by Jürgen Schmidhuber, exploring goal-conditioned RL.</p>
 					</div>
 
-					<div class="project-card">
-						<div class="project-image">
-							<i class="fas fa-users"></i>
+					<div class="project-item">
+						<div class="project-header">
+							<h3 class="project-title">Multi Agent RL</h3>
+							<a href="https://github.com/BY571/Udacity-DRL-Nanodegree-P3-Multiagent-RL-" class="project-link">GitHub →</a>
 						</div>
-						<div class="project-content">
-							<div class="project-title">Multi Agent RL</div>
-							<div class="project-description">Training two agents to play tennis against each other using multi-agent deep deterministic policy gradients (MADDPG).</div>
-							<a href="https://github.com/BY571/Udacity-DRL-Nanodegree-P3-Multiagent-RL-" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
-						</div>
+						<p class="project-description">Training two agents to play tennis against each other using multi-agent deep deterministic policy gradients (MADDPG).</p>
 					</div>
 
-					<div class="project-card">
-						<div class="project-image">
-							<i class="fas fa-car"></i>
+					<div class="project-item">
+						<div class="project-header">
+							<h3 class="project-title">Autonomous Robocar</h3>
+							<a href="https://github.com/BY571/Autonomous-Robocar" class="project-link">GitHub →</a>
 						</div>
-						<div class="project-content">
-							<div class="project-title">Autonomous Robocar</div>
-							<div class="project-description">Building and training an autonomous robocar for driving along a test track using computer vision and deep learning.</div>
-							<a href="https://github.com/BY571/Autonomous-Robocar" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
-						</div>
+						<p class="project-description">Building and training an autonomous robocar for driving along a test track using computer vision and deep learning.</p>
 					</div>
+				</div>
+
+				<div style="text-align: center; margin-top: 3rem;">
+					<a href="https://github.com/BY571" class="cv-button">
+						View All Projects
+					</a>
 				</div>
 			</div>
 		</section>
