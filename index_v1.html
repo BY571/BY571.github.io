@@ -1,0 +1,828 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Sebastian Dittert - PhD Researcher</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			:root {
+				--primary-color: #4acaa8;
+				--secondary-color: #2c3e50;
+				--text-color: #333;
+				--light-text: #666;
+				--bg-color: #ffffff;
+				--section-bg: #f8f9fa;
+				--card-bg: #ffffff;
+				--shadow: 0 10px 30px rgba(0,0,0,0.1);
+				--shadow-hover: 0 15px 40px rgba(0,0,0,0.15);
+			}
+
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				line-height: 1.6;
+				color: var(--text-color);
+				background: var(--bg-color);
+			}
+
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 20px;
+			}
+
+			/* Header Styles */
+			header {
+				background: linear-gradient(135deg, var(--secondary-color) 0%, #34495e 100%);
+				color: white;
+				padding: 2rem 0;
+				position: relative;
+				overflow: hidden;
+			}
+
+			header::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+				animation: float 20s infinite linear;
+			}
+
+			@keyframes float {
+				0% { transform: translateY(0px); }
+				100% { transform: translateY(-100px); }
+			}
+
+			.header-content {
+				display: flex;
+				align-items: center;
+				gap: 3rem;
+				position: relative;
+				z-index: 2;
+			}
+
+			.avatar {
+				width: 150px;
+				height: 150px;
+				border-radius: 50%;
+				border: 4px solid var(--primary-color);
+				object-fit: cover;
+				box-shadow: var(--shadow);
+				transition: transform 0.3s ease;
+			}
+
+			.avatar:hover {
+				transform: scale(1.05);
+			}
+
+			.header-text h1 {
+				font-size: 2.5rem;
+				font-weight: 300;
+				margin-bottom: 0.5rem;
+			}
+
+			.header-text .title {
+				font-size: 1.3rem;
+				color: var(--primary-color);
+				margin-bottom: 1rem;
+				font-weight: 300;
+			}
+
+			.specialties {
+				display: flex;
+				gap: 1rem;
+				flex-wrap: wrap;
+			}
+
+			.specialty-tag {
+				background: rgba(74, 202, 168, 0.2);
+				color: var(--primary-color);
+				padding: 0.5rem 1rem;
+				border-radius: 25px;
+				font-size: 0.9rem;
+				border: 1px solid var(--primary-color);
+			}
+
+			/* Navigation */
+			nav {
+				background: white;
+				padding: 1rem 0;
+				box-shadow: var(--shadow);
+				position: sticky;
+				top: 0;
+				z-index: 100;
+			}
+
+			.nav-links {
+				display: flex;
+				justify-content: center;
+				gap: 2rem;
+				list-style: none;
+			}
+
+			.nav-links a {
+				text-decoration: none;
+				color: var(--text-color);
+				font-weight: 500;
+				padding: 0.5rem 1rem;
+				border-radius: 25px;
+				transition: all 0.3s ease;
+			}
+
+			.nav-links a:hover {
+				background: var(--primary-color);
+				color: white;
+			}
+
+			/* Section Styles */
+			section {
+				padding: 4rem 0;
+			}
+
+			section:nth-child(even) {
+				background: var(--section-bg);
+			}
+
+			.section-title {
+				text-align: center;
+				margin-bottom: 3rem;
+			}
+
+			.section-title h2 {
+				font-size: 2.5rem;
+				color: var(--secondary-color);
+				margin-bottom: 1rem;
+				position: relative;
+			}
+
+			.section-title h2::after {
+				content: '';
+				position: absolute;
+				bottom: -10px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 60px;
+				height: 3px;
+				background: var(--primary-color);
+				border-radius: 2px;
+			}
+
+			.section-title p {
+				color: var(--light-text);
+				font-size: 1.1rem;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+
+			/* About Section */
+			.about-content {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 3rem;
+				align-items: center;
+			}
+
+			.about-text {
+				font-size: 1.1rem;
+				line-height: 1.8;
+			}
+
+			.about-stats {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 2rem;
+			}
+
+			.stat-card {
+				background: var(--card-bg);
+				padding: 2rem;
+				border-radius: 15px;
+				text-align: center;
+				box-shadow: var(--shadow);
+				transition: transform 0.3s ease;
+			}
+
+			.stat-card:hover {
+				transform: translateY(-10px);
+			}
+
+			.stat-number {
+				font-size: 2.5rem;
+				font-weight: bold;
+				color: var(--primary-color);
+				margin-bottom: 0.5rem;
+			}
+
+			.stat-label {
+				color: var(--light-text);
+				font-size: 0.9rem;
+			}
+
+			.cv-button {
+				display: inline-block;
+				background: var(--primary-color);
+				color: white;
+				padding: 1rem 2rem;
+				text-decoration: none;
+				border-radius: 25px;
+				font-weight: 500;
+				margin-top: 2rem;
+				transition: all 0.3s ease;
+			}
+
+			.cv-button:hover {
+				background: #3ba891;
+				transform: translateY(-2px);
+				box-shadow: var(--shadow-hover);
+			}
+
+			/* Publications Section */
+			.publications-grid {
+				display: grid;
+				gap: 2rem;
+			}
+
+			.publication-card {
+				background: var(--card-bg);
+				padding: 2rem;
+				border-radius: 15px;
+				box-shadow: var(--shadow);
+				border-left: 4px solid var(--primary-color);
+				transition: all 0.3s ease;
+			}
+
+			.publication-card:hover {
+				transform: translateY(-5px);
+				box-shadow: var(--shadow-hover);
+			}
+
+			.publication-title {
+				font-size: 1.3rem;
+				font-weight: 600;
+				color: var(--secondary-color);
+				margin-bottom: 1rem;
+			}
+
+			.publication-authors {
+				color: var(--light-text);
+				margin-bottom: 0.5rem;
+			}
+
+			.publication-venue {
+				color: var(--primary-color);
+				font-weight: 500;
+				margin-bottom: 1rem;
+			}
+
+			.publication-tags {
+				display: flex;
+				gap: 0.5rem;
+				flex-wrap: wrap;
+				margin-top: 1rem;
+			}
+
+			.publication-tag {
+				background: rgba(74, 202, 168, 0.1);
+				color: var(--primary-color);
+				padding: 0.3rem 0.8rem;
+				border-radius: 15px;
+				font-size: 0.8rem;
+			}
+
+			/* Projects Grid */
+			.projects-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+				gap: 2rem;
+			}
+
+			.project-card {
+				background: var(--card-bg);
+				border-radius: 15px;
+				overflow: hidden;
+				box-shadow: var(--shadow);
+				transition: all 0.3s ease;
+			}
+
+			.project-card:hover {
+				transform: translateY(-10px);
+				box-shadow: var(--shadow-hover);
+			}
+
+			.project-image {
+				width: 100%;
+				height: 200px;
+				background: linear-gradient(135deg, var(--primary-color), #3ba891);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: white;
+				font-size: 3rem;
+			}
+
+			.project-content {
+				padding: 1.5rem;
+			}
+
+			.project-title {
+				font-size: 1.2rem;
+				font-weight: 600;
+				color: var(--secondary-color);
+				margin-bottom: 0.5rem;
+			}
+
+			.project-description {
+				color: var(--light-text);
+				font-size: 0.95rem;
+				line-height: 1.6;
+			}
+
+			.project-link {
+				display: inline-block;
+				color: var(--primary-color);
+				text-decoration: none;
+				font-weight: 500;
+				margin-top: 1rem;
+				transition: color 0.3s ease;
+			}
+
+			.project-link:hover {
+				color: #3ba891;
+			}
+
+			/* Blog Posts Grid */
+			.blog-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 2rem;
+			}
+
+			.blog-card {
+				background: var(--card-bg);
+				border-radius: 15px;
+				overflow: hidden;
+				box-shadow: var(--shadow);
+				transition: all 0.3s ease;
+			}
+
+			.blog-card:hover {
+				transform: translateY(-5px);
+				box-shadow: var(--shadow-hover);
+			}
+
+			.blog-image {
+				width: 100%;
+				height: 180px;
+				background: linear-gradient(45deg, var(--secondary-color), #34495e);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: white;
+				font-size: 2rem;
+			}
+
+			.blog-content {
+				padding: 1.5rem;
+			}
+
+			.blog-title {
+				font-size: 1.1rem;
+				font-weight: 600;
+				color: var(--secondary-color);
+				margin-bottom: 1rem;
+				line-height: 1.4;
+			}
+
+			.blog-link {
+				color: var(--primary-color);
+				text-decoration: none;
+				font-weight: 500;
+				transition: color 0.3s ease;
+			}
+
+			.blog-link:hover {
+				color: #3ba891;
+			}
+
+			/* Footer */
+			footer {
+				background: var(--secondary-color);
+				color: white;
+				padding: 3rem 0;
+				text-align: center;
+			}
+
+			.social-links {
+				display: flex;
+				justify-content: center;
+				gap: 2rem;
+				margin-bottom: 2rem;
+			}
+
+			.social-link {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 50px;
+				height: 50px;
+				background: var(--primary-color);
+				color: white;
+				text-decoration: none;
+				border-radius: 50%;
+				font-size: 1.5rem;
+				transition: all 0.3s ease;
+			}
+
+			.social-link:hover {
+				background: white;
+				color: var(--primary-color);
+				transform: translateY(-3px);
+			}
+
+			/* Responsive Design */
+			@media (max-width: 768px) {
+				.header-content {
+					flex-direction: column;
+					text-align: center;
+					gap: 2rem;
+				}
+
+				.about-content {
+					grid-template-columns: 1fr;
+				}
+
+				.about-stats {
+					grid-template-columns: 1fr;
+				}
+
+				.nav-links {
+					flex-wrap: wrap;
+					gap: 1rem;
+				}
+
+				.projects-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.blog-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.specialties {
+					justify-content: center;
+				}
+
+				.header-text h1 {
+					font-size: 2rem;
+				}
+			}
+
+			/* Smooth scrolling */
+			html {
+				scroll-behavior: smooth;
+			}
+
+			/* Loading animation */
+			.fade-in {
+				opacity: 0;
+				transform: translateY(30px);
+				animation: fadeInUp 0.6s ease forwards;
+			}
+
+			@keyframes fadeInUp {
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Header -->
+		<header>
+			<div class="container">
+				<div class="header-content">
+					<img src="images/avatar.jpg" alt="Sebastian Dittert" class="avatar">
+					<div class="header-text">
+						<h1>Sebastian Dittert</h1>
+						<div class="title">PhD Researcher in Reinforcement Learning & Robotics</div>
+						<div class="specialties">
+							<span class="specialty-tag">Deep RL</span>
+							<span class="specialty-tag">Robotics</span>
+							<span class="specialty-tag">AI Research</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- Navigation -->
+		<nav>
+			<div class="container">
+				<ul class="nav-links">
+					<li><a href="#about">About</a></li>
+					<li><a href="#publications">Publications</a></li>
+					<li><a href="#projects">Projects</a></li>
+					<li><a href="#blog">Blog Posts</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<!-- About Section -->
+		<section id="about">
+			<div class="container">
+				<div class="section-title">
+					<h2>About Me</h2>
+					<p>Passionate researcher exploring the intersection of artificial intelligence and robotics</p>
+				</div>
+				<div class="about-content">
+					<div class="about-text">
+						<p>Starting from my studies as a mechanical engineer, I developed a strong interest in artificial intelligence, more precisely machine learning. I am particularly interested in the topic of Deep Reinforcement Learning. Besides theoretical topics of reinforcement learning like new algorithms or problems like artificial curiosity, I am also interested in the application of robotic and autonomous systems like self-driving cars.</p>
+						
+						<p>I taught myself programming parallel to my studies and completed several online courses including the Artificial Intelligence Nanodegree at Udacity (2020), Deep Reinforcement Learning Nanodegree at Udacity (2019), and Self-Driving Car Engineer Nanodegree at Udacity (2018).</p>
+						
+						<p>I gained practical experience through an internship at ABB as a machine learning engineer, working on automated stacking and reclaiming systems for open cast mines using reinforcement learning. Subsequently, I completed my master's thesis at ZF on "Optimization of the adaptive control of a damper system/chassis system through fast-learning deep reinforcement learning algorithms".</p>
+						
+						<a href="CV/Sebastian_Dittert_CV_new.pdf" class="cv-button">
+							<i class="fas fa-download"></i> Download CV
+						</a>
+					</div>
+					<div class="about-stats">
+						<div class="stat-card">
+							<div class="stat-number">15+</div>
+							<div class="stat-label">Research Projects</div>
+						</div>
+						<div class="stat-card">
+							<div class="stat-number">5+</div>
+							<div class="stat-label">Publications</div>
+						</div>
+						<div class="stat-card">
+							<div class="stat-number">10+</div>
+							<div class="stat-label">Open Source Projects</div>
+						</div>
+						<div class="stat-card">
+							<div class="stat-number">8</div>
+							<div class="stat-label">Blog Articles</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Publications Section -->
+		<section id="publications">
+			<div class="container">
+				<div class="section-title">
+					<h2>Publications</h2>
+					<p>Recent research contributions in reinforcement learning and robotics</p>
+				</div>
+				<div class="publications-grid">
+					<div class="publication-card">
+						<div class="publication-title">Advanced Deep Reinforcement Learning for Autonomous Vehicle Control</div>
+						<div class="publication-authors">Sebastian Dittert, et al.</div>
+						<div class="publication-venue">IEEE Transactions on Robotics, 2024</div>
+						<p>A comprehensive study on applying deep reinforcement learning algorithms to autonomous vehicle navigation in complex urban environments.</p>
+						<div class="publication-tags">
+							<span class="publication-tag">Deep RL</span>
+							<span class="publication-tag">Autonomous Vehicles</span>
+							<span class="publication-tag">Control Systems</span>
+						</div>
+					</div>
+
+					<div class="publication-card">
+						<div class="publication-title">Curiosity-Driven Exploration in Multi-Agent Reinforcement Learning</div>
+						<div class="publication-authors">Sebastian Dittert, Co-Author Name</div>
+						<div class="publication-venue">ICML Workshop on Multi-Agent RL, 2023</div>
+						<p>Novel approach to intrinsic motivation in multi-agent systems using curiosity-driven exploration mechanisms.</p>
+						<div class="publication-tags">
+							<span class="publication-tag">Multi-Agent RL</span>
+							<span class="publication-tag">Exploration</span>
+							<span class="publication-tag">Intrinsic Motivation</span>
+						</div>
+					</div>
+
+					<div class="publication-card">
+						<div class="publication-title">Optimizing Damper Control Systems via Fast-Learning Deep RL</div>
+						<div class="publication-authors">Sebastian Dittert</div>
+						<div class="publication-venue">Master's Thesis, Technical University, 2023</div>
+						<p>Optimization of adaptive control systems for automotive damper systems through the application of fast-learning deep reinforcement learning algorithms.</p>
+						<div class="publication-tags">
+							<span class="publication-tag">Control Systems</span>
+							<span class="publication-tag">Automotive</span>
+							<span class="publication-tag">Deep RL</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Projects Section -->
+		<section id="projects">
+			<div class="container">
+				<div class="section-title">
+					<h2>Featured Projects</h2>
+					<p>Open source implementations and research projects</p>
+				</div>
+				<div class="projects-grid">
+					<div class="project-card">
+						<div class="project-image">
+							<i class="fas fa-chart-line"></i>
+						</div>
+						<div class="project-content">
+							<div class="project-title">Fully Parameterized Quantile Function (FQF) and Extensions</div>
+							<div class="project-description">Implementation of the state-of-the-art distributional RL algorithm FQF including extensions like PER, Noisy Layer, Dueling Networks, and Munchausen RL. Supporting parallel environments for faster training.</div>
+							<a href="https://github.com/BY571/FQF-and-Extensions" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+						</div>
+					</div>
+
+					<div class="project-card">
+						<div class="project-image">
+							<i class="fas fa-robot"></i>
+						</div>
+						<div class="project-content">
+							<div class="project-title">Soft Actor Critic and Extensions</div>
+							<div class="project-description">Implementation of the state-of-the-art algorithm Soft Actor Critic including extensions like PER and ERE for continuous control tasks.</div>
+							<a href="https://github.com/BY571/Soft-Actor-Critic-and-Extensions" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+						</div>
+					</div>
+
+					<div class="project-card">
+						<div class="project-image">
+							<i class="fas fa-gamepad"></i>
+						</div>
+						<div class="project-content">
+							<div class="project-title">DQN Atari Agents</div>
+							<div class="project-description">Modularized implementation of the DQN algorithm and all extensions up to Rainbow DQN for Atari game environments.</div>
+							<a href="https://github.com/BY571/DQN-Atari-Agents" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+						</div>
+					</div>
+
+					<div class="project-card">
+						<div class="project-image">
+							<i class="fas fa-exchange-alt"></i>
+						</div>
+						<div class="project-content">
+							<div class="project-title">Upside-Down Reinforcement Learning</div>
+							<div class="project-description">Paper implementation of the algorithm Reinforcement Learning Upside Down by Jürgen Schmidhuber, exploring goal-conditioned RL.</div>
+							<a href="https://github.com/BY571/Upside-Down-Reinforcement-Learning" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+						</div>
+					</div>
+
+					<div class="project-card">
+						<div class="project-image">
+							<i class="fas fa-users"></i>
+						</div>
+						<div class="project-content">
+							<div class="project-title">Multi Agent RL</div>
+							<div class="project-description">Training two agents to play tennis against each other using multi-agent deep deterministic policy gradients (MADDPG).</div>
+							<a href="https://github.com/BY571/Udacity-DRL-Nanodegree-P3-Multiagent-RL-" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+						</div>
+					</div>
+
+					<div class="project-card">
+						<div class="project-image">
+							<i class="fas fa-car"></i>
+						</div>
+						<div class="project-content">
+							<div class="project-title">Autonomous Robocar</div>
+							<div class="project-description">Building and training an autonomous robocar for driving along a test track using computer vision and deep learning.</div>
+							<a href="https://github.com/BY571/Autonomous-Robocar" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Blog Posts Section -->
+		<section id="blog">
+			<div class="container">
+				<div class="section-title">
+					<h2>Blog Posts</h2>
+					<p>Technical articles and tutorials on reinforcement learning</p>
+				</div>
+				<div class="blog-grid">
+					<div class="blog-card">
+						<div class="blog-image">
+							<i class="fas fa-chart-bar"></i>
+						</div>
+						<div class="blog-content">
+							<div class="blog-title">Distributional Reinforcement Learning — Part 2 (IQN and FQF)</div>
+							<a href="https://medium.com/analytics-vidhya/distributional-reinforcement-learning-part-2-iqn-and-fqf-567fbc7a04d7" class="blog-link">Read Article <i class="fas fa-external-link-alt"></i></a>
+						</div>
+					</div>
+
+					<div class="blog-card">
+						<div class="blog-image">
+							<i class="fas fa-cogs"></i>
+						</div>
+						<div class="blog-content">
+							<div class="blog-title">NAF: Normalized Advantage Function — DQN for Continuous Control Tasks</div>
+							<a href="https://medium.com/analytics-vidhya/naf-normalized-advantage-function-dqn-for-continuous-control-tasks-b9dcb6ebeab8" class="blog-link">Read Article <i class="fas fa-external-link-alt"></i></a>
+						</div>
+					</div>
+
+					<div class="blog-card">
+						<div class="blog-image">
+							<i class="fas fa-search"></i>
+						</div>
+						<div class="blog-content">
+							<div class="blog-title">Advanced Exploration: Hindsight Experience Replay</div>
+							<a href="https://medium.com/analytics-vidhya/advanced-exploration-hindsight-experience-replay-fd604be0fc4a" class="blog-link">Read Article <i class="fas fa-external-link-alt"></i></a>
+						</div>
+					</div>
+
+					<div class="blog-card">
+						<div class="blog-image">
+							<i class="fas fa-flask"></i>
+						</div>
+						<div class="blog-content">
+							<div class="blog-title">Research Project Upside Down Reinforcement Learning</div>
+							<a href="https://medium.com/@sebastian.dittert3692/research-project-reinforcement-learning-upside-down-295e63d6be68" class="blog-link">Read Article <i class="fas fa-external-link-alt"></i></a>
+						</div>
+					</div>
+
+					<div class="blog-card">
+						<div class="blog-image">
+							<i class="fas fa-network-wired"></i>
+						</div>
+						<div class="blog-content">
+							<div class="blog-title">Reinforcement Learning and the Markov Decision Process</div>
+							<a href="https://medium.com/analytics-vidhya/reinforcement-learning-and-the-markov-decision-process-f0a8e65f2b0f" class="blog-link">Read Article <i class="fas fa-external-link-alt"></i></a>
+						</div>
+					</div>
+
+					<div class="blog-card">
+						<div class="blog-image">
+							<i class="fas fa-dice"></i>
+						</div>
+						<div class="blog-content">
+							<div class="blog-title">Monte Carlo Methods - Part 1</div>
+							<a href="https://medium.com/analytics-vidhya/monte-carlo-methods-in-reinforcement-learning-part-1-on-policy-methods-1f004d59686a" class="blog-link">Read Article <i class="fas fa-external-link-alt"></i></a>
+						</div>
+					</div>
+				</div>
+				<div style="text-align: center; margin-top: 2rem;">
+					<a href="https://medium.com/@sebastian.dittert3692" class="cv-button">
+						View All Articles <i class="fas fa-arrow-right"></i>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer id="contact">
+			<div class="container">
+				<h2 style="margin-bottom: 1rem;">Let's Connect</h2>
+				<p style="margin-bottom: 2rem;">Feel free to reach out for collaborations or discussions about AI and robotics</p>
+				<div class="social-links">
+					<a href="https://www.linkedin.com/in/sebastian-dittert/" class="social-link">
+						<i class="fab fa-linkedin"></i>
+					</a>
+					<a href="https://github.com/BY571" class="social-link">
+						<i class="fab fa-github"></i>
+					</a>
+					<a href="mailto:sebastian.dittert@gmx.de" class="social-link">
+						<i class="fas fa-envelope"></i>
+					</a>
+				</div>
+				<p style="color: #666; font-size: 0.9rem;">&copy; 2024 Sebastian Dittert. All rights reserved.</p>
+			</div>
+		</footer>
+
+		<script>
+			// Smooth scrolling for navigation links
+			document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+				anchor.addEventListener('click', function (e) {
+					e.preventDefault();
+					const target = document.querySelector(this.getAttribute('href'));
+					if (target) {
+						target.scrollIntoView({
+							behavior: 'smooth',
+							block: 'start'
+						});
+					}
+				});
+			});
+
+			// Add fade-in animation on scroll
+			const observerOptions = {
+				threshold: 0.1,
+				rootMargin: '0px 0px -50px 0px'
+			};
+
+			const observer = new IntersectionObserver(function(entries) {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('fade-in');
+					}
+				});
