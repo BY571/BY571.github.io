@@ -175,19 +175,18 @@
         .pub-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
 
         .pub-thumb {
-            width: 160px;
+            width: 200px;
             flex-shrink: 0;
-            background: var(--bg-alt);
             display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            align-items: flex-start;
+            padding: 1.25rem 0 1.25rem 1.25rem;
         }
 
         .pub-thumb img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            border: 1px solid rgba(0,0,0,.1);
+            border-radius: 4px;
+            box-shadow: 0 4px 14px rgba(0,0,0,.12);
             display: block;
         }
 
@@ -405,7 +404,10 @@
                         <span class="pub-tag">Reinforcement Learning</span>
                         <span class="pub-tag">Education</span>
                     </div>
-                    <a href="https://bricksrl.github.io/ProjectPage/" target="_blank" rel="noopener" style="display:inline-block;margin-top:.6rem;font-size:.85rem;font-weight:500;">Project Page <i class="fas fa-arrow-right"></i></a>
+                    <div style="display:flex;gap:1rem;margin-top:.6rem;">
+                        <a href="https://bricksrl.github.io/ProjectPage/" target="_blank" rel="noopener" style="font-size:.85rem;font-weight:500;">Project Page <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://github.com/BY571/BricksRL" target="_blank" rel="noopener" style="font-size:.85rem;font-weight:500;"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
                 </div>
             </div>
 
@@ -429,13 +431,14 @@
                         <span class="pub-tag">Generative Models</span>
                         <span class="pub-tag">Reinforcement Learning</span>
                     </div>
+                    <a href="https://github.com/Acellera/acegen-open" target="_blank" rel="noopener" style="display:inline-block;margin-top:.6rem;font-size:.85rem;font-weight:500;"><i class="fab fa-github"></i> GitHub</a>
                 </div>
             </div>
 
             <!-- 3 — TorchRL -->
             <div class="pub-card fade-target">
                 <div class="pub-thumb">
-                    <img src="images/papers/torchrl.png" alt="TorchRL paper front page" />
+                    <img src="images/papers/Torchrl.png" alt="TorchRL paper front page" />
                 </div>
                 <div class="pub-body">
                     <div class="pub-title">
@@ -452,13 +455,14 @@
                         <span class="pub-tag">RL Library</span>
                         <span class="pub-tag">Open Source</span>
                     </div>
+                    <a href="https://github.com/pytorch/rl" target="_blank" rel="noopener" style="display:inline-block;margin-top:.6rem;font-size:.85rem;font-weight:500;"><i class="fab fa-github"></i> GitHub</a>
                 </div>
             </div>
 
             <!-- 4 — Distributed Architectures -->
             <div class="pub-card fade-target">
                 <div class="pub-thumb">
-                    <img src="images/papers/distributed-rl.png" alt="Distributed Architectures paper front page" />
+                    <img src="images/papers/integrating.png" alt="Distributed Architectures paper front page" />
                 </div>
                 <div class="pub-body">
                     <div class="pub-title">
@@ -474,13 +478,14 @@
                         <span class="pub-tag">Distributed RL</span>
                         <span class="pub-tag">Software Architecture</span>
                     </div>
+                    <a href="https://github.com/compsciencelab/pytorchrl" target="_blank" rel="noopener" style="display:inline-block;margin-top:.6rem;font-size:.85rem;font-weight:500;"><i class="fab fa-github"></i> GitHub</a>
                 </div>
             </div>
 
             <!-- 5 — Guided Exploration -->
             <div class="pub-card fade-target">
                 <div class="pub-thumb">
-                    <img src="images/papers/guided-exploration.png" alt="Guided Exploration paper front page" />
+                    <img src="images/papers/guided_exploration.png" alt="Guided Exploration paper front page" />
                 </div>
                 <div class="pub-body">
                     <div class="pub-title">
@@ -497,6 +502,7 @@
                         <span class="pub-tag">Exploration</span>
                         <span class="pub-tag">Imitation Learning</span>
                     </div>
+                    <a href="https://github.com/compsciencelab/ppo_D" target="_blank" rel="noopener" style="display:inline-block;margin-top:.6rem;font-size:.85rem;font-weight:500;"><i class="fab fa-github"></i> GitHub</a>
                 </div>
             </div>
 
