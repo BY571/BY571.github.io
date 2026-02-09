@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reinforcement Learning — Sebastian Dittert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        /* ── Reset & Variables ── */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --accent: #3b82f6;
+            --accent-dark: #2563eb;
+            --dark: #2c3e50;
+            --dark-alt: #34495e;
+            --text: #333;
+            --text-light: #666;
+            --bg: #ffffff;
+            --bg-alt: #f8f9fa;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.14);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        a { color: var(--accent); text-decoration: none; transition: color .2s; }
+        a:hover { color: var(--accent-dark); }
+
+        /* ── Navigation ── */
+        nav {
+            background: var(--dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,.25);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: .75rem 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-inner a {
+            color: rgba(255,255,255,.8);
+            padding: .4rem 1rem;
+            border-radius: 20px;
+            font-size: .9rem;
+            font-weight: 500;
+            transition: background .2s, color .2s;
+        }
+
+        .nav-inner a:hover,
+        .nav-inner a.active {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        /* ── Page Hero ── */
+        .page-hero {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-alt) 100%);
+            color: #fff;
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+
+        .page-hero h1 { font-size: 2.4rem; font-weight: 600; margin-bottom: .5rem; }
+
+        .page-hero .subtitle {
+            color: rgba(255,255,255,.75);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ── Section Shared ── */
+        .section { padding: 4rem 0; }
+        .section--alt { background: var(--bg-alt); }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-heading h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: .5rem;
+        }
+
+        .section-heading h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            margin: .6rem auto 0;
+            border-radius: 2px;
+        }
+
+        .section-heading p { color: var(--text-light); max-width: 520px; margin: 0 auto; }
+
+        /* ── Overview ── */
+        .overview {
+            max-width: 780px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        /* ── Project Cards ── */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+
+        .project-card-img {
+            width: 100%;
+            height: 180px;
+            background: var(--bg-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: .9rem;
+            border-bottom: 1px solid rgba(0,0,0,.06);
+        }
+
+        .project-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-card-body { padding: 1.25rem; }
+
+        .project-card-body h3 {
+            font-size: 1.15rem;
+            color: var(--dark);
+            margin-bottom: .4rem;
+        }
+
+        .project-card-body p {
+            color: var(--text-light);
+            font-size: .9rem;
+            line-height: 1.6;
+            margin-bottom: .75rem;
+        }
+
+        .project-card-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+        .project-card-links a {
+            font-size: .85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: .3rem;
+        }
+
+        /* ── Gallery ── */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-slot {
+            height: 200px;
+            background: var(--bg-alt);
+            border: 2px dashed rgba(0,0,0,.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: .85rem;
+        }
+
+        /* ── Footer ── */
+        footer {
+            background: var(--dark);
+            color: #fff;
+            padding: 2.5rem 0;
+            text-align: center;
+        }
+
+        .footer-links { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.25rem; }
+
+        .footer-link {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,.1);
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: background .2s, transform .2s;
+        }
+
+        .footer-link:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
+
+        footer small { color: rgba(255,255,255,.45); font-size: .82rem; }
+
+        /* ── Responsive ── */
+        @media (max-width: 700px) {
+            .page-hero h1 { font-size: 1.8rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ── Fade-in on scroll ── */
+        .fade-target {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .5s ease, transform .5s ease;
+        }
+
+        .fade-target.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="container nav-inner">
+        <a href="index.html#about">About</a>
+        <a href="index.html#publications">Publications</a>
+        <a href="index.html#interests">Research</a>
+    </div>
+</nav>
+
+<!-- Page Hero -->
+<section class="page-hero">
+    <div class="container">
+        <h1><i class="fas fa-brain"></i> Reinforcement Learning</h1>
+        <p class="subtitle">Algorithm development, exploration strategies, and sample-efficient training methods</p>
+    </div>
+</section>
+
+<!-- Overview -->
+<section class="section">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Overview</h2>
+        </div>
+        <p class="overview fade-target">
+            Reinforcement learning is my core research area. I focus on developing novel deep RL algorithms,
+            improving exploration strategies, and building scalable training infrastructure. My work spans
+            from foundational algorithm research to open-source library development, with contributions to
+            PyTorch's official RL library and distributed training architectures.
+        </p>
+    </div>
+</section>
+
+<!-- Projects -->
+<section class="section section--alt">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Projects &amp; Highlights</h2>
+            <p>Key contributions and research projects</p>
+        </div>
+
+        <div class="projects-grid">
+
+            <div class="project-card fade-target">
+                <div class="project-card-img">
+                    <img src="images/papers/Torchrl.png" alt="TorchRL" />
+                </div>
+                <div class="project-card-body">
+                    <h3>TorchRL</h3>
+                    <p>A data-driven decision-making library for PyTorch. Core contributor to the official PyTorch RL library providing modular, efficient components for RL research and applications.</p>
+                    <div class="project-card-links">
+                        <a href="https://arxiv.org/abs/2306.00577" target="_blank" rel="noopener"><i class="fas fa-file-alt"></i> Paper</a>
+                        <a href="https://github.com/pytorch/rl" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-target">
+                <div class="project-card-img">
+                    <img src="images/papers/integrating.png" alt="Distributed Architectures" />
+                </div>
+                <div class="project-card-body">
+                    <h3>Distributed RL Architectures</h3>
+                    <p>Research on integrating distributed training architectures into modular RL libraries, enabling scalable and efficient reinforcement learning across multiple workers.</p>
+                    <div class="project-card-links">
+                        <a href="https://arxiv.org/abs/2007.02622" target="_blank" rel="noopener"><i class="fas fa-file-alt"></i> Paper</a>
+                        <a href="https://github.com/compsciencelab/pytorchrl" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-target">
+                <div class="project-card-img">
+                    <img src="images/papers/guided_exploration.png" alt="Guided Exploration" />
+                </div>
+                <div class="project-card-body">
+                    <h3>Guided Exploration with PPO</h3>
+                    <p>A method for guided exploration using Proximal Policy Optimization with a single demonstration, combining imitation learning cues with policy gradient methods.</p>
+                    <div class="project-card-links">
+                        <a href="https://arxiv.org/abs/2105.01696" target="_blank" rel="noopener"><i class="fas fa-file-alt"></i> Paper</a>
+                        <a href="https://github.com/compsciencelab/ppo_D" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Gallery -->
+<section class="section">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Gallery</h2>
+            <p>Videos, demos, and visualizations</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-slot fade-target"><i class="fas fa-image" style="margin-right:.5rem;"></i> Add image or video</div>
+            <div class="gallery-slot fade-target"><i class="fas fa-image" style="margin-right:.5rem;"></i> Add image or video</div>
+            <div class="gallery-slot fade-target"><i class="fas fa-image" style="margin-right:.5rem;"></i> Add image or video</div>
+            <div class="gallery-slot fade-target"><i class="fas fa-image" style="margin-right:.5rem;"></i> Add image or video</div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-links">
+            <a class="footer-link" href="https://www.linkedin.com/in/sebastian-dittert/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a class="footer-link" href="https://github.com/BY571" target="_blank" rel="noopener" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a class="footer-link" href="mailto:sebastian.dittert@gmx.de" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        <small>&copy; 2025 Sebastian Dittert</small>
+    </div>
+</footer>
+
+<script>
+var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-target').forEach(function(el) {
+    observer.observe(el);
+});
+</script>
+
+</body>
+</html>
