@@ -3,29 +3,45 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sebastian Dittert</title>
+    <title>~/sebastian.dittert</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <style>
         /* ── Reset & Variables ── */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --accent: #3b82f6;
-            --accent-dark: #2563eb;
-            --dark: #2c3e50;
-            --dark-alt: #34495e;
-            --text: #333;
-            --text-light: #666;
-            --bg: #ffffff;
-            --bg-alt: #f8f9fa;
-            --shadow: 0 4px 20px rgba(0,0,0,0.08);
-            --shadow-hover: 0 8px 30px rgba(0,0,0,0.14);
+            --accent: #00ffc8;
+            --accent-dim: rgba(0,255,200,.15);
+            --bg: #0a0a0a;
+            --bg-alt: #111;
+            --surface: #161616;
+            --border: rgba(255,255,255,.1);
+            --text: #e0e0e0;
+            --text-light: #888;
+            --text-bright: #fff;
+            --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        [data-theme="light"] {
+            --accent: #e8500e;
+            --accent-dim: rgba(232,80,14,.12);
+            --bg: #fafafa;
+            --bg-alt: #f0f0f0;
+            --surface: #fff;
+            --border: rgba(0,0,0,.1);
+            --text: #1a1a1a;
+            --text-light: #555;
+            --text-bright: #000;
         }
 
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--font-body);
             line-height: 1.6;
             color: var(--text);
             background: var(--bg);
@@ -34,15 +50,15 @@
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
         a { color: var(--accent); text-decoration: none; transition: color .2s; }
-        a:hover { color: var(--accent-dark); }
+        a:hover { color: var(--text-bright); }
 
         /* ── Navigation ── */
         nav {
-            background: var(--dark);
+            background: var(--bg);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,.25);
+            border-bottom: 1px solid var(--border);
         }
 
         .nav-inner {
@@ -54,24 +70,27 @@
         }
 
         .nav-inner a {
-            color: rgba(255,255,255,.8);
-            padding: .4rem 1rem;
-            border-radius: 20px;
-            font-size: .9rem;
+            color: var(--text-light);
+            padding: .4rem .75rem;
+            border-radius: 0;
+            font-family: var(--font-mono);
+            font-size: .85rem;
             font-weight: 500;
-            transition: background .2s, color .2s;
+            transition: color .2s;
         }
 
         .nav-inner a:hover,
         .nav-inner a.active {
-            background: var(--accent);
-            color: #fff;
+            color: var(--accent);
+            background: none;
+            text-decoration: underline;
+            text-underline-offset: 4px;
         }
 
         /* ── Header / About ── */
         .hero {
-            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-alt) 100%);
-            color: #fff;
+            background: var(--bg);
+            color: var(--text);
             padding: 4rem 0 3.5rem;
         }
 
@@ -81,25 +100,16 @@
             gap: 3rem;
         }
 
-        .avatar {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: none;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .hero-text h1 { font-size: 2.4rem; font-weight: 600; margin-bottom: .35rem; }
-
-        .hero-text .subtitle {
-            color: var(--accent);
-            font-size: 1.15rem;
-            margin-bottom: .75rem;
+        .hero-text h1 {
+            font-family: var(--font-mono);
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: .35rem;
+            color: var(--text-bright);
         }
 
         .hero-text .bio {
-            color: rgba(255,255,255,.82);
+            color: var(--text-light);
             max-width: 580px;
             margin-bottom: 1rem;
             line-height: 1.7;
@@ -108,12 +118,13 @@
         .tags { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 1.2rem; justify-content: center; }
 
         .tag {
-            background: rgba(59,130,246,.18);
+            background: transparent;
             color: var(--accent);
             padding: .35rem .9rem;
-            border-radius: 20px;
+            border-radius: 0;
             font-size: .82rem;
-            border: 1px solid rgba(59,130,246,.4);
+            font-family: var(--font-mono);
+            border: 1px solid var(--accent);
         }
 
         .social-row { display: flex; gap: .8rem; flex-wrap: wrap; justify-content: center; }
@@ -122,42 +133,36 @@
             display: inline-flex;
             align-items: center;
             gap: .45rem;
-            color: #fff;
-            background: rgba(255,255,255,.1);
-            padding: .45rem 1rem;
-            border-radius: 20px;
+            color: var(--text-light);
+            background: none;
+            padding: .45rem 0;
+            border-radius: 0;
+            font-family: var(--font-mono);
             font-size: .85rem;
-            transition: background .2s;
+            transition: color .2s;
         }
 
-        .social-btn:hover { background: var(--accent); color: #fff; }
+        .social-btn:hover { color: var(--accent); background: none; }
 
         /* ── Section Shared ── */
         .section { padding: 4rem 0; }
         .section--alt { background: var(--bg-alt); }
 
         .section-heading {
-            text-align: center;
+            text-align: left;
             margin-bottom: 2.5rem;
         }
 
         .section-heading h2 {
-            font-size: 2rem;
-            color: var(--dark);
+            font-family: var(--font-mono);
+            font-size: 1.6rem;
+            color: var(--accent);
             margin-bottom: .5rem;
         }
 
-        .section-heading h2::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-            margin: .6rem auto 0;
-            border-radius: 2px;
-        }
+        .section-heading h2::after { display: none; }
 
-        .section-heading p { color: var(--text-light); max-width: 520px; margin: 0 auto; }
+        .section-heading p { color: var(--text-light); }
 
         /* ── Publications ── */
         .pub-list { display: flex; flex-direction: column; gap: 1.5rem; }
@@ -165,14 +170,14 @@
         .pub-card {
             display: flex;
             gap: 1.5rem;
-            background: var(--bg);
-            border-radius: 10px;
-            box-shadow: var(--shadow);
+            background: var(--surface);
+            border-radius: 0;
+            border: 1px solid var(--border);
             overflow: hidden;
-            transition: transform .2s, box-shadow .2s;
+            transition: border-color .2s;
         }
 
-        .pub-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+        .pub-card:hover { border-color: var(--accent); }
 
         .pub-thumb {
             width: 200px;
@@ -184,9 +189,8 @@
 
         .pub-thumb img {
             width: 100%;
-            border: 1px solid rgba(0,0,0,.1);
-            border-radius: 4px;
-            box-shadow: 0 4px 14px rgba(0,0,0,.12);
+            border: 1px solid var(--border);
+            border-radius: 0;
             display: block;
         }
 
@@ -195,7 +199,7 @@
         .pub-title {
             font-size: 1.1rem;
             font-weight: 600;
-            color: var(--dark);
+            color: var(--text-bright);
             margin-bottom: .4rem;
             line-height: 1.35;
         }
@@ -208,14 +212,28 @@
 
         .pub-venue { color: var(--accent); font-size: .88rem; font-weight: 500; margin-bottom: .6rem; }
 
-        .pub-tags { display: flex; gap: .4rem; flex-wrap: wrap; }
+        .pub-links {
+            display: flex;
+            gap: .5rem;
+            flex-wrap: wrap;
+        }
 
-        .pub-tag {
-            background: rgba(59,130,246,.1);
+        .pub-links a {
+            background: transparent;
             color: var(--accent);
-            padding: .2rem .6rem;
-            border-radius: 12px;
-            font-size: .75rem;
+            padding: .25rem .7rem;
+            border: 1px solid var(--accent);
+            font-size: .78rem;
+            font-family: var(--font-mono);
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            transition: background .2s, color .2s;
+        }
+
+        .pub-links a:hover {
+            background: var(--accent);
+            color: var(--bg);
         }
 
         /* ── Research Interests ── */
@@ -226,32 +244,26 @@
         }
 
         .interest-card {
-            background: var(--bg);
-            border-radius: 10px;
+            background: var(--surface);
+            border-radius: 0;
             padding: 2rem 1.5rem;
-            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
             text-align: center;
-            transition: transform .2s, box-shadow .2s;
+            transition: border-color .2s;
         }
 
-        .interest-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+        .interest-card:hover { border-color: var(--accent); }
 
         .interest-icon {
-            width: 56px;
-            height: 56px;
             margin: 0 auto .9rem;
-            background: rgba(59,130,246,.12);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             color: var(--accent);
-            font-size: 1.35rem;
+            font-size: 1.5rem;
         }
 
         .interest-card h3 {
-            font-size: 1.1rem;
-            color: var(--dark);
+            font-family: var(--font-mono);
+            font-size: 1.05rem;
+            color: var(--text-bright);
             margin-bottom: .5rem;
         }
 
@@ -265,34 +277,33 @@
         .interest-link {
             font-size: .85rem;
             font-weight: 500;
+            font-family: var(--font-mono);
         }
 
         /* ── Footer ── */
         footer {
-            background: var(--dark);
-            color: #fff;
+            background: var(--bg);
+            color: var(--text);
             padding: 2.5rem 0;
             text-align: center;
+            border-top: 1px solid var(--border);
         }
 
-        .footer-links { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.25rem; }
+        .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.25rem; }
 
         .footer-link {
-            width: 42px;
-            height: 42px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,.1);
-            border-radius: 50%;
-            color: #fff;
-            font-size: 1.1rem;
-            transition: background .2s, transform .2s;
+            gap: .4rem;
+            color: var(--text-light);
+            font-family: var(--font-mono);
+            font-size: .85rem;
+            transition: color .2s;
         }
 
-        .footer-link:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
+        .footer-link:hover { color: var(--accent); }
 
-        footer small { color: rgba(255,255,255,.45); font-size: .82rem; }
+        footer small { color: var(--text-light); font-size: .82rem; }
 
         /* ── Responsive ── */
         @media (max-width: 700px) {
@@ -317,6 +328,28 @@
             .interests-grid { grid-template-columns: 1fr; }
         }
 
+        /* ── Theme Toggle ── */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: .35rem .5rem;
+            line-height: 1;
+            transition: color .2s, border-color .2s;
+            font-family: var(--font-mono);
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        [data-theme="light"] .pub-links a:hover {
+            color: #fff;
+        }
+
         /* ── Fade-in on scroll ── */
         .fade-target {
             opacity: 0;
@@ -338,6 +371,7 @@
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
         <a href="#interests">Research</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode"><i class="fas fa-sun"></i></button>
     </div>
 </nav>
 
@@ -345,9 +379,8 @@
 <section class="hero" id="about">
     <div class="container">
         <div class="hero-grid">
-            <img src="media/avatar.jpg" alt="Sebastian Dittert" class="avatar" />
             <div class="hero-text">
-                <h1>Sebastian Dittert</h1>
+                <h1><span style="color:var(--accent)">~</span>/sebastian.dittert <span style="color:var(--accent)">$</span></h1>
                 <p class="bio">
                     I am a researcher working at the intersection of deep reinforcement learning, robotics, and AI-driven scientific discovery. My work focuses on developing RL algorithms and applying them to real-world robotic systems and automated research pipelines.
                 </p>
@@ -398,14 +431,9 @@
                         <span class="me">Sebastian Dittert</span>, Vincent Moens, Gianni De Fabritiis
                     </div>
                     <div class="pub-venue">NeurIPS 2024</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag">Robotics</span>
-                        <span class="pub-tag">Reinforcement Learning</span>
-                        <span class="pub-tag">Education</span>
-                    </div>
-                    <div style="display:flex;gap:1rem;margin-top:.6rem;">
-                        <a href="https://bricksrl.github.io/ProjectPage/" target="_blank" rel="noopener" style="font-size:.85rem;font-weight:500;">Project Page <i class="fas fa-arrow-right"></i></a>
-                        <a href="https://github.com/BricksRL/bricksrl" target="_blank" rel="noopener" style="font-size:.85rem;font-weight:500;"><i class="fab fa-github"></i> GitHub</a>
+                    <div class="pub-links">
+                        <a href="https://bricksrl.github.io/ProjectPage/" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Project Page</a>
+                        <a href="https://github.com/BricksRL/bricksrl" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
                     </div>
                 </div>
             </div>
@@ -425,12 +453,9 @@
                         Albert Bou, Morgan Thomas, <span class="me">Sebastian Dittert</span>, Ramil Maulud, Julien Roy, Samuel Genheden, Igor Tetko, Gianni De Fabritiis
                     </div>
                     <div class="pub-venue">GEM Workshop, ICLR 2024 &amp; J. Chem. Inf. Model. (JCIM)</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag">Drug Discovery</span>
-                        <span class="pub-tag">Generative Models</span>
-                        <span class="pub-tag">Reinforcement Learning</span>
+                    <div class="pub-links">
+                        <a href="https://github.com/Acellera/acegen-open" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
                     </div>
-                    <a href="https://github.com/Acellera/acegen-open" target="_blank" rel="noopener" style="display:inline-block;margin-top:.6rem;font-size:.85rem;font-weight:500;"><i class="fab fa-github"></i> GitHub</a>
                 </div>
             </div>
 
@@ -449,12 +474,9 @@
                         Albert Bou, Matteo Bettini, <span class="me">Sebastian Dittert</span>, Vikash Kumar, Shagun Sodhani, Xiaomeng Yang, Gianni De Fabritiis, Vincent Moens
                     </div>
                     <div class="pub-venue">ICLR 2024</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag">PyTorch</span>
-                        <span class="pub-tag">RL Library</span>
-                        <span class="pub-tag">Open Source</span>
+                    <div class="pub-links">
+                        <a href="https://github.com/pytorch/rl" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
                     </div>
-                    <a href="https://github.com/pytorch/rl" target="_blank" rel="noopener" style="display:inline-block;margin-top:.6rem;font-size:.85rem;font-weight:500;"><i class="fab fa-github"></i> GitHub</a>
                 </div>
             </div>
 
@@ -473,11 +495,9 @@
                         Albert Bou, <span class="me">Sebastian Dittert</span>, Gianni De Fabritiis
                     </div>
                     <div class="pub-venue">EWRL 2023</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag">Distributed RL</span>
-                        <span class="pub-tag">Software Architecture</span>
+                    <div class="pub-links">
+                        <a href="https://github.com/compsciencelab/pytorchrl" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
                     </div>
-                    <a href="https://github.com/compsciencelab/pytorchrl" target="_blank" rel="noopener" style="display:inline-block;margin-top:.6rem;font-size:.85rem;font-weight:500;"><i class="fab fa-github"></i> GitHub</a>
                 </div>
             </div>
 
@@ -496,12 +516,9 @@
                         Gabriele Libardi, <span class="me">Sebastian Dittert</span>, Gianni De Fabritiis
                     </div>
                     <div class="pub-venue">ICML 2021</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag">PPO</span>
-                        <span class="pub-tag">Exploration</span>
-                        <span class="pub-tag">Imitation Learning</span>
+                    <div class="pub-links">
+                        <a href="https://github.com/compsciencelab/ppo_D" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
                     </div>
-                    <a href="https://github.com/compsciencelab/ppo_D" target="_blank" rel="noopener" style="display:inline-block;margin-top:.6rem;font-size:.85rem;font-weight:500;"><i class="fab fa-github"></i> GitHub</a>
                 </div>
             </div>
 
@@ -556,13 +573,13 @@
     <div class="container">
         <div class="footer-links">
             <a class="footer-link" href="https://www.linkedin.com/in/sebastian-dittert/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
+                <i class="fab fa-linkedin-in"></i> LinkedIn
             </a>
             <a class="footer-link" href="https://github.com/BY571" target="_blank" rel="noopener" aria-label="GitHub">
-                <i class="fab fa-github"></i>
+                <i class="fab fa-github"></i> GitHub
             </a>
             <a class="footer-link" href="mailto:sebastian.dittert@gmx.de" aria-label="Email">
-                <i class="fas fa-envelope"></i>
+                <i class="fas fa-envelope"></i> Email
             </a>
         </div>
         <small>&copy; 2025 Sebastian Dittert</small>
@@ -613,6 +630,29 @@ var observer = new IntersectionObserver(function(entries) {
 document.querySelectorAll('.fade-target').forEach(function(el) {
     observer.observe(el);
 });
+
+// Theme toggle
+(function() {
+    var toggle = document.getElementById('theme-toggle');
+    var icon = toggle.querySelector('i');
+    var saved = localStorage.getItem('theme');
+    if (saved === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        icon.className = 'fas fa-moon';
+    }
+    toggle.addEventListener('click', function() {
+        var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        if (isLight) {
+            document.documentElement.removeAttribute('data-theme');
+            icon.className = 'fas fa-sun';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            icon.className = 'fas fa-moon';
+            localStorage.setItem('theme', 'light');
+        }
+    });
+})();
 </script>
 
 </body>

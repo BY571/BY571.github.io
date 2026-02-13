@@ -4,28 +4,44 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Reinforcement Learning — Sebastian Dittert</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <style>
         /* ── Reset & Variables ── */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --accent: #3b82f6;
-            --accent-dark: #2563eb;
-            --dark: #2c3e50;
-            --dark-alt: #34495e;
-            --text: #333;
-            --text-light: #666;
-            --bg: #ffffff;
-            --bg-alt: #f8f9fa;
-            --shadow: 0 4px 20px rgba(0,0,0,0.08);
-            --shadow-hover: 0 8px 30px rgba(0,0,0,0.14);
+            --accent: #00ffc8;
+            --accent-dim: rgba(0,255,200,.15);
+            --bg: #0a0a0a;
+            --bg-alt: #111;
+            --surface: #161616;
+            --border: rgba(255,255,255,.1);
+            --text: #e0e0e0;
+            --text-light: #888;
+            --text-bright: #fff;
+            --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        [data-theme="light"] {
+            --accent: #e8500e;
+            --accent-dim: rgba(232,80,14,.12);
+            --bg: #fafafa;
+            --bg-alt: #f0f0f0;
+            --surface: #fff;
+            --border: rgba(0,0,0,.1);
+            --text: #1a1a1a;
+            --text-light: #555;
+            --text-bright: #000;
         }
 
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--font-body);
             line-height: 1.6;
             color: var(--text);
             background: var(--bg);
@@ -34,15 +50,15 @@
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
         a { color: var(--accent); text-decoration: none; transition: color .2s; }
-        a:hover { color: var(--accent-dark); }
+        a:hover { color: var(--text-bright); }
 
         /* ── Navigation ── */
         nav {
-            background: var(--dark);
+            background: var(--bg);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,.25);
+            border-bottom: 1px solid var(--border);
         }
 
         .nav-inner {
@@ -54,32 +70,42 @@
         }
 
         .nav-inner a {
-            color: rgba(255,255,255,.8);
-            padding: .4rem 1rem;
-            border-radius: 20px;
-            font-size: .9rem;
+            color: var(--text-light);
+            padding: .4rem .75rem;
+            border-radius: 0;
+            font-family: var(--font-mono);
+            font-size: .85rem;
             font-weight: 500;
-            transition: background .2s, color .2s;
+            transition: color .2s;
         }
 
         .nav-inner a:hover,
         .nav-inner a.active {
-            background: var(--accent);
-            color: #fff;
+            color: var(--accent);
+            background: none;
+            text-decoration: underline;
+            text-underline-offset: 4px;
         }
 
         /* ── Page Hero ── */
         .page-hero {
-            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-alt) 100%);
-            color: #fff;
+            background: var(--bg);
+            color: var(--text);
             padding: 4rem 0 3rem;
             text-align: center;
+            border-bottom: 1px solid var(--border);
         }
 
-        .page-hero h1 { font-size: 2.4rem; font-weight: 600; margin-bottom: .5rem; }
+        .page-hero h1 {
+            font-family: var(--font-mono);
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: .5rem;
+            color: var(--text-bright);
+        }
 
         .page-hero .subtitle {
-            color: rgba(255,255,255,.75);
+            color: var(--text-light);
             font-size: 1.1rem;
             max-width: 600px;
             margin: 0 auto;
@@ -90,27 +116,20 @@
         .section--alt { background: var(--bg-alt); }
 
         .section-heading {
-            text-align: center;
+            text-align: left;
             margin-bottom: 2.5rem;
         }
 
         .section-heading h2 {
-            font-size: 2rem;
-            color: var(--dark);
+            font-family: var(--font-mono);
+            font-size: 1.6rem;
+            color: var(--accent);
             margin-bottom: .5rem;
         }
 
-        .section-heading h2::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-            margin: .6rem auto 0;
-            border-radius: 2px;
-        }
+        .section-heading h2::after { display: none; }
 
-        .section-heading p { color: var(--text-light); max-width: 520px; margin: 0 auto; }
+        .section-heading p { color: var(--text-light); }
 
         /* ── Overview ── */
         .overview {
@@ -130,14 +149,14 @@
         }
 
         .project-card {
-            background: var(--bg);
-            border-radius: 10px;
-            box-shadow: var(--shadow);
+            background: var(--surface);
+            border-radius: 0;
+            border: 1px solid var(--border);
             overflow: hidden;
-            transition: transform .2s, box-shadow .2s;
+            transition: border-color .2s;
         }
 
-        .project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+        .project-card:hover { border-color: var(--accent); }
 
         .project-card-img {
             width: 100%;
@@ -148,7 +167,7 @@
             justify-content: center;
             color: var(--text-light);
             font-size: .9rem;
-            border-bottom: 1px solid rgba(0,0,0,.06);
+            border-bottom: 1px solid var(--border);
         }
 
         .project-card-img img {
@@ -160,8 +179,9 @@
         .project-card-body { padding: 1.25rem; }
 
         .project-card-body h3 {
-            font-size: 1.15rem;
-            color: var(--dark);
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            color: var(--text-bright);
             margin-bottom: .4rem;
         }
 
@@ -177,6 +197,7 @@
         .project-card-links a {
             font-size: .85rem;
             font-weight: 500;
+            font-family: var(--font-mono);
             display: inline-flex;
             align-items: center;
             gap: .3rem;
@@ -191,9 +212,9 @@
 
         .gallery-slot {
             height: 200px;
-            background: var(--bg-alt);
-            border: 2px dashed rgba(0,0,0,.1);
-            border-radius: 10px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -203,36 +224,52 @@
 
         /* ── Footer ── */
         footer {
-            background: var(--dark);
-            color: #fff;
+            background: var(--bg);
+            color: var(--text);
             padding: 2.5rem 0;
             text-align: center;
+            border-top: 1px solid var(--border);
         }
 
-        .footer-links { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.25rem; }
+        .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.25rem; }
 
         .footer-link {
-            width: 42px;
-            height: 42px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,.1);
-            border-radius: 50%;
-            color: #fff;
-            font-size: 1.1rem;
-            transition: background .2s, transform .2s;
+            gap: .4rem;
+            color: var(--text-light);
+            font-family: var(--font-mono);
+            font-size: .85rem;
+            transition: color .2s;
         }
 
-        .footer-link:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
+        .footer-link:hover { color: var(--accent); }
 
-        footer small { color: rgba(255,255,255,.45); font-size: .82rem; }
+        footer small { color: var(--text-light); font-size: .82rem; }
 
         /* ── Responsive ── */
         @media (max-width: 700px) {
             .page-hero h1 { font-size: 1.8rem; }
             .projects-grid { grid-template-columns: 1fr; }
             .gallery-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ── Theme Toggle ── */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: .35rem .5rem;
+            line-height: 1;
+            transition: color .2s, border-color .2s;
+            font-family: var(--font-mono);
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent);
+            border-color: var(--accent);
         }
 
         /* ── Fade-in on scroll ── */
@@ -256,6 +293,7 @@
         <a href="index.html#about">About</a>
         <a href="index.html#publications">Publications</a>
         <a href="index.html#interests">Research</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode"><i class="fas fa-sun"></i></button>
     </div>
 </nav>
 
@@ -360,13 +398,13 @@
     <div class="container">
         <div class="footer-links">
             <a class="footer-link" href="https://www.linkedin.com/in/sebastian-dittert/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
+                <i class="fab fa-linkedin-in"></i> LinkedIn
             </a>
             <a class="footer-link" href="https://github.com/BY571" target="_blank" rel="noopener" aria-label="GitHub">
-                <i class="fab fa-github"></i>
+                <i class="fab fa-github"></i> GitHub
             </a>
             <a class="footer-link" href="mailto:sebastian.dittert@gmx.de" aria-label="Email">
-                <i class="fas fa-envelope"></i>
+                <i class="fas fa-envelope"></i> Email
             </a>
         </div>
         <small>&copy; 2025 Sebastian Dittert</small>
@@ -385,6 +423,29 @@ var observer = new IntersectionObserver(function(entries) {
 document.querySelectorAll('.fade-target').forEach(function(el) {
     observer.observe(el);
 });
+
+// Theme toggle
+(function() {
+    var toggle = document.getElementById('theme-toggle');
+    var icon = toggle.querySelector('i');
+    var saved = localStorage.getItem('theme');
+    if (saved === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        icon.className = 'fas fa-moon';
+    }
+    toggle.addEventListener('click', function() {
+        var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        if (isLight) {
+            document.documentElement.removeAttribute('data-theme');
+            icon.className = 'fas fa-sun';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            icon.className = 'fas fa-moon';
+            localStorage.setItem('theme', 'light');
+        }
+    });
+})();
 </script>
 
 </body>
