@@ -23,7 +23,7 @@
             --text-light: #888;
             --text-bright: #fff;
             --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-body: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
         }
 
         [data-theme="light"] {
@@ -130,16 +130,6 @@
         .section-heading h2::after { display: none; }
 
         .section-heading p { color: var(--text-light); }
-
-        /* ── Overview ── */
-        .overview {
-            max-width: 780px;
-            margin: 0 auto;
-            font-size: 1.05rem;
-            color: var(--text-light);
-            line-height: 1.8;
-            text-align: center;
-        }
 
         /* ── Project Cards ── */
         .projects-grid {
@@ -305,20 +295,6 @@
     </div>
 </section>
 
-<!-- Overview -->
-<section class="section">
-    <div class="container">
-        <div class="section-heading">
-            <h2>Overview</h2>
-        </div>
-        <p class="overview fade-target">
-            Automating complex workflows with AI agents. Applications include scientific research,
-            engineering, and general work. The goal is to connect agents with tools such as simulations
-            so that they can create hypotheses and test them automatically.
-        </p>
-    </div>
-</section>
-
 <!-- Projects -->
 <section class="section section--alt">
     <div class="container">
@@ -371,6 +347,7 @@
             </div>
 
         </div>
+        <p style="color:var(--text-light); font-size:.95rem; margin-top:2rem; text-align:center;">Happy to discuss any of these — feel free to <a href="mailto:sebastian.dittert@gmx.de">reach out</a>.</p>
     </div>
 </section>
 
