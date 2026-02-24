@@ -280,6 +280,38 @@
             font-family: var(--font-mono);
         }
 
+        /* ── Articles ── */
+        .articles-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: .75rem;
+        }
+
+        .articles-list a {
+            display: block;
+            padding: .7rem 1rem;
+            border: 1px solid var(--border);
+            color: var(--text);
+            text-decoration: none;
+            font-size: .85rem;
+            font-family: var(--font-mono);
+            transition: border-color .2s, color .2s;
+        }
+
+        .articles-list a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .articles-list a i { margin-right: .4rem; color: var(--accent); }
+
+        .articles-more {
+            margin-top: 1.25rem;
+            text-align: center;
+            font-size: .85rem;
+            font-family: var(--font-mono);
+        }
+
         /* ── Footer ── */
         footer {
             background: var(--bg);
@@ -567,6 +599,31 @@
                 <a class="interest-link" href="agentic-automation.html">More <i class="fas fa-arrow-right"></i></a>
             </div>
 
+        </div>
+    </div>
+</section>
+
+<!-- Articles -->
+<section class="section section--alt" id="articles">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Articles</h2>
+        </div>
+
+        <div class="articles-list">
+            <a href="https://medium.com/@sebastian-dittert/train-your-own-falcon-9-landing-policy-with-rl-mujoco-6c87f41ba745" target="_blank" rel="noopener"><i class="fab fa-medium"></i> Train Your Own Falcon 9 Landing Policy with RL &amp; MuJoCo</a>
+            <a href="https://medium.com/datadriveninvestor/building-almost-fully-automated-ml-experiments-with-claudecode-41d3973d2109" target="_blank" rel="noopener"><i class="fab fa-medium"></i> Building Almost Fully Automated ML Experiments with Claude Code</a>
+            <a href="https://medium.com/analytics-vidhya/distributional-reinforcement-learning-part-1-c51-and-qr-dqn-a04c96a258dc" target="_blank" rel="noopener"><i class="fab fa-medium"></i> Distributional RL Part 1: C51 and QR-DQN</a>
+            <a href="https://medium.com/analytics-vidhya/distributional-reinforcement-learning-part-2-iqn-and-fqf-567fbc7a04d7" target="_blank" rel="noopener"><i class="fab fa-medium"></i> Distributional RL Part 2: IQN and FQF</a>
+            <a href="https://medium.com/analytics-vidhya/d2rl-deep-dense-architectures-in-reinforcement-learning-24419e6804b" target="_blank" rel="noopener"><i class="fab fa-medium"></i> D2RL: Deep Dense Architectures in Reinforcement Learning</a>
+            <a href="https://medium.com/analytics-vidhya/introduction-to-model-based-reinforcement-learning-6db0573160da" target="_blank" rel="noopener"><i class="fab fa-medium"></i> Introduction to Model-Based Reinforcement Learning</a>
+            <a href="https://medium.com/analytics-vidhya/naf-normalized-advantage-function-dqn-for-continuous-control-tasks-b9dcb6ebeab8" target="_blank" rel="noopener"><i class="fab fa-medium"></i> NAF: Normalized Advantage Function for Continuous Control</a>
+            <a href="https://medium.com/analytics-vidhya/research-project-reinforcement-learning-upside-down-295e63d6be68" target="_blank" rel="noopener"><i class="fab fa-medium"></i> Reinforcement Learning Upside Down</a>
+            <a href="https://medium.com/analytics-vidhya/deep-reinforcement-learning-and-representation-learning-8a6362e761ee" target="_blank" rel="noopener"><i class="fab fa-medium"></i> Deep Reinforcement Learning and Representation Learning</a>
+            <a href="https://medium.com/analytics-vidhya/training-larger-networks-for-deep-reinforcement-learning-64709901256" target="_blank" rel="noopener"><i class="fab fa-medium"></i> Training Larger Networks for Deep Reinforcement Learning</a>
+        </div>
+        <div class="articles-more">
+            <a href="https://medium.com/@sebastian-dittert" target="_blank" rel="noopener">More on Medium <i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
 </section>
