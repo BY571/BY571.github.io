@@ -719,24 +719,32 @@ document.querySelectorAll('.fade-target').forEach(function(el) {
     });
 })();
 
-// Fetch total GitHub stars
+// Fetch total GitHub stars (BY571 + TorchTrade org)
 (function() {
-    var page = 1, total = 0;
-    function fetchPage() {
-        fetch('https://api.github.com/users/BY571/repos?per_page=100&page=' + page)
-            .then(function(r) { return r.json(); })
-            .then(function(repos) {
-                if (!Array.isArray(repos)) return;
-                repos.forEach(function(r) { total += r.stargazers_count || 0; });
-                if (repos.length === 100) { page++; fetchPage(); }
-                else {
-                    var el = document.getElementById('total-stars');
-                    if (el) el.textContent = '(\u2733 ' + total + ')';
-                }
-            })
-            .catch(function() {});
+    var total = 0, pending = 0;
+    var orgs = ['BY571', 'TorchTrade'];
+
+    function show() {
+        var el = document.getElementById('total-stars');
+        if (el) el.textContent = '(\u2733 ' + total + ')';
     }
-    fetchPage();
+
+    orgs.forEach(function(org) {
+        var page = 1;
+        pending++;
+        function fetchPage() {
+            fetch('https://api.github.com/users/' + org + '/repos?per_page=100&page=' + page)
+                .then(function(r) { return r.json(); })
+                .then(function(repos) {
+                    if (!Array.isArray(repos)) return;
+                    repos.forEach(function(r) { total += r.stargazers_count || 0; });
+                    if (repos.length === 100) { page++; fetchPage(); }
+                    else { pending--; if (pending === 0) show(); }
+                })
+                .catch(function() { pending--; if (pending === 0) show(); });
+        }
+        fetchPage();
+    });
 })();
 </script>
 
