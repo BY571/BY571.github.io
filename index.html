@@ -428,7 +428,7 @@
                         <i class="fab fa-linkedin"></i> LinkedIn
                     </a>
                     <a class="social-btn" href="https://github.com/BY571" target="_blank" rel="noopener">
-                        <i class="fab fa-github"></i> GitHub
+                        <i class="fab fa-github"></i> GitHub <span id="total-stars" style="opacity:.6"></span>
                     </a>
                     <a class="social-btn" href="mailto:sebastian.dittert@gmx.de">
                         <i class="fas fa-envelope"></i> Email
@@ -717,6 +717,26 @@ document.querySelectorAll('.fade-target').forEach(function(el) {
             localStorage.setItem('theme', 'light');
         }
     });
+})();
+
+// Fetch total GitHub stars
+(function() {
+    var page = 1, total = 0;
+    function fetchPage() {
+        fetch('https://api.github.com/users/BY571/repos?per_page=100&page=' + page)
+            .then(function(r) { return r.json(); })
+            .then(function(repos) {
+                if (!Array.isArray(repos)) return;
+                repos.forEach(function(r) { total += r.stargazers_count || 0; });
+                if (repos.length === 100) { page++; fetchPage(); }
+                else {
+                    var el = document.getElementById('total-stars');
+                    if (el) el.textContent = '(\u2733 ' + total + ')';
+                }
+            })
+            .catch(function() {});
+    }
+    fetchPage();
 })();
 </script>
 
