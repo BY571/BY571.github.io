@@ -212,6 +212,35 @@
             font-size: .85rem;
         }
 
+        /* ── Repos List ── */
+        .repos-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: .75rem;
+        }
+
+        .repos-list a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: .7rem 1rem;
+            border: 1px solid var(--border);
+            color: var(--text);
+            text-decoration: none;
+            font-size: .85rem;
+            font-family: var(--font-mono);
+            transition: border-color .2s, color .2s;
+        }
+
+        .repos-list a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .repos-list a i { margin-right: .4rem; color: var(--accent); }
+
+        .repos-list .stars { color: var(--text-light); font-size: .8rem; }
+
         /* ── Footer ── */
         footer {
             background: var(--bg);
@@ -360,8 +389,53 @@
                 </div>
             </div>
 
+            <div class="project-card fade-target">
+                <div class="project-card-img">
+                    <img src="media/papers/falcon9.png" alt="SpaceX Falcon 9 Landing Simulator" />
+                </div>
+                <div class="project-card-body">
+                    <h3>SpaceX Falcon 9 Landing</h3>
+                    <p>RL agent trained to land a rocket on a drone ship using MuJoCo physics. GPU-accelerated training with 4096 parallel environments and PPO via TorchRL.</p>
+                    <div class="project-card-links">
+                        <a href="https://github.com/BY571/SpaceX-Falcon9" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <p style="color:var(--text-light); font-size:.95rem; margin-top:2rem; text-align:center;">Happy to discuss any of these — feel free to <a href="mailto:sebastian.dittert@gmx.de">reach out</a>.</p>
+    </div>
+</section>
+
+<!-- More Repos -->
+<section class="section">
+    <div class="container">
+        <div class="section-heading">
+            <h2>More Repositories</h2>
+        </div>
+
+        <div class="repos-list">
+            <a href="https://github.com/BY571/Soft-Actor-Critic-and-Extensions" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> SAC and Extensions</span> <span class="stars">&#9733; 295</span></a>
+            <a href="https://github.com/BY571/CQL" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> CQL</span> <span class="stars">&#9733; 147</span></a>
+            <a href="https://github.com/BY571/DQN-Atari-Agents" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> DQN Atari Agents</span> <span class="stars">&#9733; 122</span></a>
+            <a href="https://github.com/BY571/IQN-and-Extensions" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> IQN and Extensions</span> <span class="stars">&#9733; 93</span></a>
+            <a href="https://github.com/BY571/Deep-Reinforcement-Learning-Algorithm-Collection" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> Deep RL Algorithm Collection</span> <span class="stars">&#9733; 80</span></a>
+            <a href="https://github.com/BY571/Upside-Down-Reinforcement-Learning" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> Upside-Down RL</span> <span class="stars">&#9733; 78</span></a>
+            <a href="https://github.com/BY571/SAC_discrete" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> SAC Discrete</span> <span class="stars">&#9733; 55</span></a>
+            <a href="https://github.com/BY571/Implicit-Q-Learning" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> Implicit Q-Learning</span> <span class="stars">&#9733; 44</span></a>
+            <a href="https://github.com/BY571/Munchausen-RL" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> Munchausen RL</span> <span class="stars">&#9733; 44</span></a>
+            <a href="https://github.com/BY571/FQF-and-Extensions" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> FQF and Extensions</span> <span class="stars">&#9733; 34</span></a>
+            <a href="https://github.com/BY571/QR-DQN" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> QR-DQN</span> <span class="stars">&#9733; 29</span></a>
+            <a href="https://github.com/BY571/Normalized-Advantage-Function-NAF-" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> NAF</span> <span class="stars">&#9733; 28</span></a>
+            <a href="https://github.com/BY571/D4PG" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> D4PG</span> <span class="stars">&#9733; 24</span></a>
+            <a href="https://github.com/BY571/Randomized-Ensembled-Double-Q-learning-REDQ-" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> REDQ</span> <span class="stars">&#9733; 21</span></a>
+            <a href="https://github.com/BY571/GARNE-Genetic-Algorithm-with-Recurrent-Network-" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> GARNE</span> <span class="stars">&#9733; 14</span></a>
+            <a href="https://github.com/BY571/Genetic-Algorithms-Neural-Network-Optimization" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> GA Neural Network Optimization</span> <span class="stars">&#9733; 13</span></a>
+            <a href="https://github.com/BY571/GANs" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> GANs</span> <span class="stars">&#9733; 12</span></a>
+            <a href="https://github.com/BY571/OFENet" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> OFENet</span> <span class="stars">&#9733; 10</span></a>
+            <a href="https://github.com/BY571/RA-PPO" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> RA-PPO</span> <span class="stars">&#9733; 8</span></a>
+            <a href="https://github.com/BY571/MBPO" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> MBPO</span></a>
+        </div>
     </div>
 </section>
 
