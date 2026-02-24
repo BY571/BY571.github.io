@@ -220,9 +220,7 @@
         }
 
         .repos-list a {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: block;
             padding: .7rem 1rem;
             border: 1px solid var(--border);
             color: var(--text);
@@ -237,9 +235,24 @@
             color: var(--accent);
         }
 
-        .repos-list a i { margin-right: .4rem; color: var(--accent); }
+        .repos-list .repo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .repos-list .repo-header i { margin-right: .4rem; color: var(--accent); }
 
         .repos-list .stars { color: var(--text-light); font-size: .8rem; }
+
+        .repos-list .repo-desc {
+            display: block;
+            margin-top: .3rem;
+            font-size: .75rem;
+            color: var(--text-light);
+            font-family: var(--font-body);
+            line-height: 1.4;
+        }
 
         /* ── Footer ── */
         footer {
@@ -415,31 +428,106 @@
         </div>
 
         <div class="repos-list">
-            <a href="https://github.com/BY571/Soft-Actor-Critic-and-Extensions" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> SAC and Extensions</span> <span class="stars">&#9733; 295</span></a>
-            <a href="https://github.com/BY571/CQL" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> CQL</span> <span class="stars">&#9733; 147</span></a>
-            <a href="https://github.com/BY571/DQN-Atari-Agents" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> DQN Atari Agents</span> <span class="stars">&#9733; 122</span></a>
-            <a href="https://github.com/BY571/IQN-and-Extensions" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> IQN and Extensions</span> <span class="stars">&#9733; 93</span></a>
-            <a href="https://github.com/BY571/Deep-Reinforcement-Learning-Algorithm-Collection" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> Deep RL Algorithm Collection</span> <span class="stars">&#9733; 80</span></a>
-            <a href="https://github.com/BY571/Upside-Down-Reinforcement-Learning" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> Upside-Down RL</span> <span class="stars">&#9733; 78</span></a>
-            <a href="https://github.com/BY571/SAC_discrete" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> SAC Discrete</span> <span class="stars">&#9733; 55</span></a>
-            <a href="https://github.com/BY571/Implicit-Q-Learning" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> Implicit Q-Learning</span> <span class="stars">&#9733; 44</span></a>
-            <a href="https://github.com/BY571/Munchausen-RL" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> Munchausen RL</span> <span class="stars">&#9733; 44</span></a>
-            <a href="https://github.com/BY571/FQF-and-Extensions" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> FQF and Extensions</span> <span class="stars">&#9733; 34</span></a>
-            <a href="https://github.com/BY571/QR-DQN" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> QR-DQN</span> <span class="stars">&#9733; 29</span></a>
-            <a href="https://github.com/BY571/Normalized-Advantage-Function-NAF-" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> NAF</span> <span class="stars">&#9733; 28</span></a>
-            <a href="https://github.com/BY571/D4PG" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> D4PG</span> <span class="stars">&#9733; 24</span></a>
-            <a href="https://github.com/BY571/Randomized-Ensembled-Double-Q-learning-REDQ-" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> REDQ</span> <span class="stars">&#9733; 21</span></a>
-            <a href="https://github.com/BY571/GARNE-Genetic-Algorithm-with-Recurrent-Network-" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> GARNE</span> <span class="stars">&#9733; 14</span></a>
-            <a href="https://github.com/BY571/Genetic-Algorithms-Neural-Network-Optimization" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> GA Neural Network Optimization</span> <span class="stars">&#9733; 13</span></a>
-            <a href="https://github.com/BY571/GANs" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> GANs</span> <span class="stars">&#9733; 12</span></a>
-            <a href="https://github.com/BY571/OFENet" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> OFENet</span> <span class="stars">&#9733; 10</span></a>
-            <a href="https://github.com/BY571/RA-PPO" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> RA-PPO</span> <span class="stars">&#9733; 8</span></a>
-            <a href="https://github.com/BY571/MBPO" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> MBPO</span> <span class="stars">&#9733; 6</span></a>
-            <a href="https://github.com/BY571/pytorch-vmpo" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> PyTorch V-MPO</span> <span class="stars">&#9733; 5</span></a>
-            <a href="https://github.com/BY571/Hindsight-Experience-Replay" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> Hindsight Experience Replay</span> <span class="stars">&#9733; 4</span></a>
-            <a href="https://github.com/BY571/PETS-MPC" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> PETS-MPC</span> <span class="stars">&#9733; 3</span></a>
-            <a href="https://github.com/BY571/CEN-Network" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> CEN Network</span> <span class="stars">&#9733; 2</span></a>
-            <a href="https://github.com/BY571/D4PG-ray" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> D4PG-Ray</span> <span class="stars">&#9733; 2</span></a>
+            <a href="https://github.com/BY571/Soft-Actor-Critic-and-Extensions" target="_blank" rel="noopener" data-repo="BY571/Soft-Actor-Critic-and-Extensions">
+                <span class="repo-header"><span><i class="fab fa-github"></i> SAC and Extensions</span> <span class="stars">&#9733; 295</span></span>
+                <span class="repo-desc">SAC with PER, Emphasizing Recent Experience, Munchausen RL, D2RL, and parallel environments.</span>
+            </a>
+            <a href="https://github.com/BY571/CQL" target="_blank" rel="noopener" data-repo="BY571/CQL">
+                <span class="repo-header"><span><i class="fab fa-github"></i> CQL</span> <span class="stars">&#9733; 147</span></span>
+                <span class="repo-desc">Conservative Q-Learning for offline RL. Includes DQN-CQL and SAC-CQL variants for discrete and continuous action spaces.</span>
+            </a>
+            <a href="https://github.com/BY571/DQN-Atari-Agents" target="_blank" rel="noopener" data-repo="BY571/DQN-Atari-Agents">
+                <span class="repo-header"><span><i class="fab fa-github"></i> DQN Atari Agents</span> <span class="stars">&#9733; 122</span></span>
+                <span class="repo-desc">Modular DQN agents for Atari: DDQN, Dueling DQN, Noisy DQN, C51, Rainbow, and DRQN.</span>
+            </a>
+            <a href="https://github.com/BY571/IQN-and-Extensions" target="_blank" rel="noopener" data-repo="BY571/IQN-and-Extensions">
+                <span class="repo-header"><span><i class="fab fa-github"></i> IQN and Extensions</span> <span class="stars">&#9733; 93</span></span>
+                <span class="repo-desc">Implicit Quantile Networks for distributional RL with PER, noisy layers, N-step bootstrapping, and dueling architecture.</span>
+            </a>
+            <a href="https://github.com/BY571/Deep-Reinforcement-Learning-Algorithm-Collection" target="_blank" rel="noopener" data-repo="BY571/Deep-Reinforcement-Learning-Algorithm-Collection">
+                <span class="repo-header"><span><i class="fab fa-github"></i> Deep RL Algorithm Collection</span> <span class="stars">&#9733; 80</span></span>
+                <span class="repo-desc">Comprehensive collection of deep RL algorithm implementations in PyTorch.</span>
+            </a>
+            <a href="https://github.com/BY571/Upside-Down-Reinforcement-Learning" target="_blank" rel="noopener" data-repo="BY571/Upside-Down-Reinforcement-Learning">
+                <span class="repo-header"><span><i class="fab fa-github"></i> Upside-Down RL</span> <span class="stars">&#9733; 78</span></span>
+                <span class="repo-desc">Implementation of Schmidhuber's Upside-Down RL — supervised learning on desired rewards and time horizons.</span>
+            </a>
+            <a href="https://github.com/BY571/SAC_discrete" target="_blank" rel="noopener" data-repo="BY571/SAC_discrete">
+                <span class="repo-header"><span><i class="fab fa-github"></i> SAC Discrete</span> <span class="stars">&#9733; 55</span></span>
+                <span class="repo-desc">Soft Actor-Critic adapted for discrete action spaces.</span>
+            </a>
+            <a href="https://github.com/BY571/Implicit-Q-Learning" target="_blank" rel="noopener" data-repo="BY571/Implicit-Q-Learning">
+                <span class="repo-header"><span><i class="fab fa-github"></i> Implicit Q-Learning</span> <span class="stars">&#9733; 44</span></span>
+                <span class="repo-desc">IQL for offline RL — learns optimal policies without querying out-of-distribution actions.</span>
+            </a>
+            <a href="https://github.com/BY571/Munchausen-RL" target="_blank" rel="noopener" data-repo="BY571/Munchausen-RL">
+                <span class="repo-header"><span><i class="fab fa-github"></i> Munchausen RL</span> <span class="stars">&#9733; 44</span></span>
+                <span class="repo-desc">M-DQN and M-IQN: adding scaled log-policy to the reward for implicit KL regularization.</span>
+            </a>
+            <a href="https://github.com/BY571/FQF-and-Extensions" target="_blank" rel="noopener" data-repo="BY571/FQF-and-Extensions">
+                <span class="repo-header"><span><i class="fab fa-github"></i> FQF and Extensions</span> <span class="stars">&#9733; 34</span></span>
+                <span class="repo-desc">Fully Parameterized Quantile Function for distributional RL with N-step, PER, noisy layers, and dueling.</span>
+            </a>
+            <a href="https://github.com/BY571/QR-DQN" target="_blank" rel="noopener" data-repo="BY571/QR-DQN">
+                <span class="repo-header"><span><i class="fab fa-github"></i> QR-DQN</span> <span class="stars">&#9733; 29</span></span>
+                <span class="repo-desc">Distributional RL with quantile regression for learning the full return distribution.</span>
+            </a>
+            <a href="https://github.com/BY571/Normalized-Advantage-Function-NAF-" target="_blank" rel="noopener" data-repo="BY571/Normalized-Advantage-Function-NAF-">
+                <span class="repo-header"><span><i class="fab fa-github"></i> NAF</span> <span class="stars">&#9733; 28</span></span>
+                <span class="repo-desc">Q-learning for continuous control using normalized advantage functions with PER and N-step returns.</span>
+            </a>
+            <a href="https://github.com/BY571/D4PG" target="_blank" rel="noopener" data-repo="BY571/D4PG">
+                <span class="repo-header"><span><i class="fab fa-github"></i> D4PG</span> <span class="stars">&#9733; 24</span></span>
+                <span class="repo-desc">Distributed Distributional DDPG with an IQN critic, plus Munchausen RL and D2RL extensions.</span>
+            </a>
+            <a href="https://github.com/BY571/Randomized-Ensembled-Double-Q-learning-REDQ-" target="_blank" rel="noopener" data-repo="BY571/Randomized-Ensembled-Double-Q-learning-REDQ-">
+                <span class="repo-header"><span><i class="fab fa-github"></i> REDQ</span> <span class="stars">&#9733; 21</span></span>
+                <span class="repo-desc">Randomized ensembled double Q-learning for sample-efficient continuous control.</span>
+            </a>
+            <a href="https://github.com/BY571/GARNE-Genetic-Algorithm-with-Recurrent-Network-and-Novelty-Exploration" target="_blank" rel="noopener" data-repo="BY571/GARNE-Genetic-Algorithm-with-Recurrent-Network-and-Novelty-Exploration">
+                <span class="repo-header"><span><i class="fab fa-github"></i> GARNE</span> <span class="stars">&#9733; 14</span></span>
+                <span class="repo-desc">Genetic algorithm with recurrent networks and novelty-driven exploration for neuroevolution.</span>
+            </a>
+            <a href="https://github.com/BY571/Genetic-Algorithms-Neural-Network-Optimization" target="_blank" rel="noopener" data-repo="BY571/Genetic-Algorithms-Neural-Network-Optimization">
+                <span class="repo-header"><span><i class="fab fa-github"></i> GA Neural Network Optimization</span> <span class="stars">&#9733; 13</span></span>
+                <span class="repo-desc">Genetic algorithms for neural network architecture search, hyperparameter tuning, and weight optimization.</span>
+            </a>
+            <a href="https://github.com/BY571/GANs" target="_blank" rel="noopener" data-repo="BY571/GANs">
+                <span class="repo-header"><span><i class="fab fa-github"></i> GANs</span> <span class="stars">&#9733; 12</span></span>
+                <span class="repo-desc">ClusterGAN implementation — combining GANs with clustering for unsupervised representation learning.</span>
+            </a>
+            <a href="https://github.com/BY571/OFENet" target="_blank" rel="noopener" data-repo="BY571/OFENet">
+                <span class="repo-header"><span><i class="fab fa-github"></i> OFENet</span> <span class="stars">&#9733; 10</span></span>
+                <span class="repo-desc">Online Feature Extractor Network — learned feature representations for continuous control RL.</span>
+            </a>
+            <a href="https://github.com/BY571/RA-PPO" target="_blank" rel="noopener" data-repo="BY571/RA-PPO">
+                <span class="repo-header"><span><i class="fab fa-github"></i> RA-PPO</span> <span class="stars">&#9733; 8</span></span>
+                <span class="repo-desc">Risk-averse PPO — policy optimization with CVaR objectives for safer decision making.</span>
+            </a>
+            <a href="https://github.com/BY571/MBPO" target="_blank" rel="noopener" data-repo="BY571/MBPO">
+                <span class="repo-header"><span><i class="fab fa-github"></i> MBPO</span> <span class="stars">&#9733; 6</span></span>
+                <span class="repo-desc">Model-Based Policy Optimization — using learned dynamics models to generate synthetic rollouts for SAC.</span>
+            </a>
+            <a href="https://github.com/BY571/pytorch-vmpo" target="_blank" rel="noopener" data-repo="BY571/pytorch-vmpo">
+                <span class="repo-header"><span><i class="fab fa-github"></i> PyTorch V-MPO</span> <span class="stars">&#9733; 5</span></span>
+                <span class="repo-desc">V-MPO: on-policy maximum a posteriori policy optimization with learned temperature parameters.</span>
+            </a>
+            <a href="https://github.com/BY571/Hindsight-Experience-Replay" target="_blank" rel="noopener" data-repo="BY571/Hindsight-Experience-Replay">
+                <span class="repo-header"><span><i class="fab fa-github"></i> Hindsight Experience Replay</span> <span class="stars">&#9733; 4</span></span>
+                <span class="repo-desc">HER for goal-conditioned RL — relabeling failed episodes with achieved goals to accelerate learning.</span>
+            </a>
+            <a href="https://github.com/BY571/PETS-MPC" target="_blank" rel="noopener" data-repo="BY571/PETS-MPC">
+                <span class="repo-header"><span><i class="fab fa-github"></i> PETS-MPC</span> <span class="stars">&#9733; 3</span></span>
+                <span class="repo-desc">Probabilistic ensemble trajectory sampling with model predictive control for model-based RL.</span>
+            </a>
+            <a href="https://github.com/BY571/CEN-Network" target="_blank" rel="noopener" data-repo="BY571/CEN-Network">
+                <span class="repo-header"><span><i class="fab fa-github"></i> CEN Network</span> <span class="stars">&#9733; 2</span></span>
+                <span class="repo-desc">Context-dependent Elastic Network for continual learning without catastrophic forgetting.</span>
+            </a>
+            <a href="https://github.com/BY571/D4PG-ray" target="_blank" rel="noopener" data-repo="BY571/D4PG-ray">
+                <span class="repo-header"><span><i class="fab fa-github"></i> D4PG-Ray</span> <span class="stars">&#9733; 2</span></span>
+                <span class="repo-desc">Distributed D4PG using Ray for parallel data collection with IQN critic and Munchausen RL.</span>
+            </a>
         </div>
     </div>
 </section>
@@ -515,6 +603,23 @@ document.querySelectorAll('.fade-target').forEach(function(el) {
             icon.className = 'fas fa-moon';
             localStorage.setItem('theme', 'light');
         }
+    });
+})();
+
+// Auto-update GitHub star counts
+(function() {
+    var links = document.querySelectorAll('[data-repo]');
+    links.forEach(function(link) {
+        var repo = link.getAttribute('data-repo');
+        fetch('https://api.github.com/repos/' + repo)
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.stargazers_count !== undefined) {
+                    var stars = link.querySelector('.stars');
+                    if (stars) stars.textContent = '\u2733 ' + data.stargazers_count;
+                }
+            })
+            .catch(function() {});
     });
 })();
 </script>
