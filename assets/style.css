@@ -1,6 +1,6 @@
-/* by571.github.io shared stylesheet. Tokens on :root (light), overrides under [data-theme="dark"]. */
+/* by571.github.io shared stylesheet. Tokens on :root (light, the default), overrides under [data-theme="dark"]. */
 :root {
-  --bg: #faf9f6;
+  --bg: #ffffff;
   --surface: #ffffff;
   --text: #1a1a1a;
   --text-2: #5f5e5a;

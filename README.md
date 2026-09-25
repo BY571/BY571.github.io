@@ -29,9 +29,8 @@ media/                     images
 
 ## Theme
 
-Light by default. Dark mode follows the OS preference unless the toggle stored a choice
-in `localStorage`. The inline script in each page's `<head>` applies the theme before
-first paint.
+Light on every first visit. The toggle switches to dark and stores the choice in
+`localStorage`; the inline script in each page's `<head>` applies it before first paint.
 
 ## Star counts
 
