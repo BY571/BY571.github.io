@@ -56,14 +56,14 @@ h1, h2 { font-family: var(--serif); font-weight: 600; letter-spacing: -.01em; }
 [data-theme="dark"] .theme-toggle .icon-moon { display: block; }
 
 /* Intro (index) and page title (subpages) */
-.intro { padding: 4rem 0 2.5rem; display: flex; gap: 2rem; align-items: flex-start; }
+.intro { padding-top: 4rem; padding-bottom: 2.5rem; display: flex; gap: 2rem; align-items: flex-start; }
 .intro-photo { width: 112px; height: 112px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
 .intro h1, .page-title h1 { font-size: 2.3rem; line-height: 1.1; margin-bottom: .9rem; }
 .intro p { max-width: 62ch; color: var(--text-2); margin-bottom: 1.1rem; }
 .links { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; font-size: .92rem; }
 .links a { display: inline-flex; align-items: center; gap: .4rem; color: var(--text); }
 .links a:hover { color: var(--accent); text-decoration: none; }
-.page-title { padding: 3.5rem 0 1rem; }
+.page-title { padding-top: 3.5rem; padding-bottom: 1rem; }
 .page-title p { color: var(--text-2); max-width: 62ch; }
 
 /* Sections */
