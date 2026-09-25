@@ -51,6 +51,7 @@ h1, h2 { font-family: var(--serif); font-weight: 600; letter-spacing: -.01em; }
   display: inline-flex; align-items: center; justify-content: center;
 }
 .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+html:not(.js) .theme-toggle { display: none; }
 .theme-toggle .icon-moon { display: none; }
 [data-theme="dark"] .theme-toggle .icon-sun { display: none; }
 [data-theme="dark"] .theme-toggle .icon-moon { display: block; }
@@ -153,5 +154,5 @@ h1, h2 { font-family: var(--serif); font-weight: 600; letter-spacing: -.01em; }
   .articles { columns: 1; }
   .pub { grid-template-columns: 1fr; }
   .pub img { display: none; }
-  .talks { grid-template-columns: 1fr 1fr; }
+  .talks { gap: .5rem; }
 }

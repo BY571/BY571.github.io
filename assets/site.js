@@ -1,10 +1,15 @@
 (function () {
   // Theme toggle. The initial data-theme is set by the inline script in <head>.
   var btn = document.getElementById('theme-toggle');
+  function reflect() {
+    if (btn) btn.setAttribute('aria-pressed', document.documentElement.getAttribute('data-theme') === 'dark' ? 'true' : 'false');
+  }
+  reflect();
   if (btn) btn.addEventListener('click', function () {
     var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     try { localStorage.setItem('theme', next); } catch (e) {}
+    reflect();
   });
 
   // Star counts from data/stars.json (refreshed weekly by a GitHub Action).
