@@ -24,8 +24,8 @@ media/                     images
 - Add a project: copy one `<article class="card">` block on the matching subpage.
 - Add a repository to the RL page: copy one `<a class="repo">` block; the `data-repo`
   attribute must be `owner/name` so the star count is filled from `data/stars.json`.
-- Embed a video: `<a class="yt" href="https://www.youtube.com/watch?v=ID" data-id="ID" aria-label="Play video: title"></a>`.
-  The thumbnail loads immediately; the player only after a click.
+- Embed a video: copy one `<a class="yt" ...>` block from `robotics.html` and replace the video ID
+  in all three places (href, `data-id`, thumbnail URL). The player loads only after a click.
 
 ## Theme
 

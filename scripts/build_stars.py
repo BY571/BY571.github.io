@@ -1,9 +1,10 @@
 """Write data/stars.json with star counts for every repo under the listed owners.
 
+The file holds counts only, so a weekly run with no change produces no diff and no commit.
+
 Runs in the weekly GitHub Action (uses the built-in GH_TOKEN via the gh CLI)
 and can be run locally with `gh` logged in.
 """
-import datetime
 import json
 import subprocess
 
@@ -22,7 +23,6 @@ for owner in OWNERS:
 
 data = dict(sorted(stars.items()))
 data["_total"] = sum(stars.values())
-data["_updated"] = datetime.date.today().isoformat()
 
 with open("data/stars.json", "w") as f:
     json.dump(data, f, indent=1)

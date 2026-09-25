@@ -22,11 +22,12 @@
     }).catch(function () {});
   }
 
-  // YouTube: thumbnail link first, iframe only after a click. Without JS the link opens YouTube.
+  // YouTube: thumbnail link first (inline background image), iframe only after a click.
+  // Without JS the link opens YouTube. Modifier clicks keep their open-in-new-tab meaning.
   document.querySelectorAll('.yt[data-id]').forEach(function (b) {
     var id = b.getAttribute('data-id');
-    b.style.backgroundImage = 'url(https://i.ytimg.com/vi/' + id + '/hqdefault.jpg)';
     b.addEventListener('click', function (ev) {
+      if (ev.ctrlKey || ev.metaKey || ev.shiftKey) return;
       ev.preventDefault();
       var f = document.createElement('iframe');
       f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
@@ -37,6 +38,7 @@
       wrap.className = 'yt playing';
       wrap.appendChild(f);
       b.replaceWith(wrap);
+      f.focus();
     }, { once: true });
   });
 })();

@@ -1,4 +1,4 @@
-/* by571.github.io — shared stylesheet. Tokens on :root (light), overrides under [data-theme="dark"]. */
+/* by571.github.io shared stylesheet. Tokens on :root (light), overrides under [data-theme="dark"]. */
 :root {
   --bg: #faf9f6;
   --surface: #ffffff;
@@ -47,7 +47,7 @@ h1, h2 { font-family: var(--serif); font-weight: 600; letter-spacing: -.01em; }
 .nav-links a.active { color: var(--text); border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
 .theme-toggle {
   background: none; border: 1px solid var(--border); color: var(--text-2);
-  width: 34px; height: 34px; border-radius: 999px; cursor: pointer;
+  width: 34px; height: 34px; border-radius: 999px; cursor: pointer; flex-shrink: 0;
   display: inline-flex; align-items: center; justify-content: center;
 }
 .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
@@ -67,7 +67,7 @@ h1, h2 { font-family: var(--serif); font-weight: 600; letter-spacing: -.01em; }
 .page-title p { color: var(--text-2); max-width: 62ch; }
 
 /* Sections */
-.section { padding: 2.5rem 0; border-top: 1px solid var(--border); }
+.section { padding: 2.5rem 0; border-top: 1px solid var(--border); scroll-margin-top: 56px; }
 .section h2 { font-size: 1.45rem; line-height: 1.2; margin-bottom: 1.5rem; }
 .section h2 + p.muted { margin: -1rem 0 1.5rem; }
 .section .note { color: var(--text-2); font-size: .92rem; margin-top: 1.5rem; }
@@ -145,6 +145,10 @@ h1, h2 { font-family: var(--serif); font-weight: 600; letter-spacing: -.01em; }
   .intro h1, .page-title h1 { font-size: 1.9rem; }
   .nav-links { gap: .9rem; }
   .nav-links a { font-size: .86rem; }
+}
+@media (max-width: 380px) {
+  .nav-links { gap: .6rem; }
+  .nav-links a { font-size: .82rem; }
   .areas { grid-template-columns: 1fr; }
   .articles { columns: 1; }
   .pub { grid-template-columns: 1fr; }
