@@ -58,7 +58,7 @@ html:not(.js) .theme-toggle { display: none; }
 
 /* Intro (index) and page title (subpages) */
 .intro { padding-top: 4rem; padding-bottom: 2.5rem; display: flex; gap: 2rem; align-items: flex-start; }
-.intro-photo { width: 112px; height: 112px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
+.intro-photo { width: 160px; height: 160px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
 .intro h1, .page-title h1 { font-size: 2.3rem; line-height: 1.1; margin-bottom: .9rem; }
 .intro p { max-width: 62ch; color: var(--text-2); margin-bottom: 1.1rem; }
 .links { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; font-size: .92rem; }
